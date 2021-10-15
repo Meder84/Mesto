@@ -10,6 +10,7 @@
 
     /*  block logo  */
 @import url(../blocks/logo/logo.css);
+@import url(../blocks/logo/_margin/logo_margin.css);
 
     /*  block header  */
 @import url(../blocks/header/header.css);

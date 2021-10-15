@@ -3,6 +3,7 @@
   max-width: calc(100% - (200px * 2));
   min-height: 74px;
   border-bottom: 1px solid #545454;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1150px) {
@@ -20,6 +21,6 @@
 
 @media screen and (max-width: 500px) {
   .header {
-    max-width: calc(100% - (19px * 2));
+    max-width: 100%;
   }
 } 
