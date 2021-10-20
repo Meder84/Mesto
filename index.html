@@ -21,9 +21,9 @@
       <section class="profile">
         <img class="profile__avatar opacity" src="./images/avatar.jpg" alt="аватар.">
         <div class="profile__info">
-          <h1 class="profile__title">Жак-Ив Кусто</h1>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button class="profile__edit-button opacity"><img class="profile__vector-pen" src="./images/vector-pen.png" alt="иконка ручки"></button>
-          <p class="profile__subtitle">Исследователь океана</p>
+          <p class="profile__job">Исследователь океана</p>
         </div>
         <button class="profile__add-button opacity">
           <img class="profile__vector-plus" src="./images/vector-plus.png" alt="иконка знака плюс">
@@ -123,25 +123,25 @@
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <section class="popup popup_opened">
+    <section class="popup">
       <form class="popup__container" action="#">
-        <button class="popup__close-button opacity">
-          <img class="popup__close-button-image" src="./images/Close-icon.png" alt="иконка x.">
-        </button>
         <fieldset class="popup__field">
           <h2 class="popup__title">Редактировать профиль</h2>
           <input 
-            class="popup__input-text"
+            class="popup__name-input"
             type="text" 
-            placeholder="Имя">
+            value="Имя">
           <input 
-            class="popup__input-text"
+            class="popup__job-input"
             type="text"
-            placeholder="Профессия">
+            value="Профессия">
           <input class="popup__submit-button opacity"
             type="button"
             value="Сохранить">
         </fieldset>
+        <button class="popup__close-button opacity">
+          <img class="popup__close-button-image" src="./images/Close-icon.png" alt="иконка x.">
+        </button>
       </form>
     </section>
 
