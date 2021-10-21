@@ -26,7 +26,7 @@ const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
 
 const editUserName = function() {
-  if(nameInput.value === '' || nameInput.value === Number) {
+  if(nameInput.value === '') {
     return;
   } else {
     profileName.textContent = nameInput.value;
@@ -34,7 +34,7 @@ const editUserName = function() {
 }
 
 const editUserJob = function() {
-  if(jobInput.value === '' || jobInput.value === Number) {
+  if(jobInput.value === '') {
     return;
   } else {
     profileJob.textContent = jobInput.value;
