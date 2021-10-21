@@ -2,7 +2,7 @@
   margin: 0;
   min-height: 27px;
   width: 100%;
-  padding: 0;
+  padding: 0 0 7px 0;
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;
@@ -18,6 +18,5 @@
   .popup__name-input {
     font-size: 14px;
     line-height: 17px;
-    padding-bottom: 7px;
   }
 }
