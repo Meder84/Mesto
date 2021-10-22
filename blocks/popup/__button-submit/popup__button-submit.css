@@ -12,7 +12,7 @@
 }
 
 .popup__button-submit:hover {
-  background-color: rgba(0, 0, 0, .8) ;
+  background-color: rgba(0, 0, 0, .8);
   transition: 0.3s linear;
   cursor: pointer;
 }
