@@ -3,18 +3,24 @@
   height: 32px;
   box-sizing: border-box;
   background-color: rgba(0, 0, 0, 0.0);
+  background-image: url(../../../images/close-Icon.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-position-x: 50%;
+  background-position-y: center;
+  background-size: cover;
   padding: 0;
   border: none;
-  position: relative;
-  margin: -40px -40px 0 0;
-  text-decoration: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
 }
 
 @media screen and (max-width: 530px) {
   .popup__close-button {
-    margin-top: 35px;
-    margin-right: 0;
     width: 20px;
     height: 20px;
+    top: -35px;
+    right: 0;
   }
 }

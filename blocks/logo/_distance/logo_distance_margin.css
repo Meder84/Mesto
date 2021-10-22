@@ -1,0 +1,9 @@
+.logo_distance_margin {
+  margin: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .logo_distance_margin {
+    margin: 0 auto auto 27px;
+  }
+}

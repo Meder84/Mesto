@@ -1,15 +1,17 @@
 .profile__edit-button {
   display: flex;
-  justify-content: center;
-  align-items: center;
   width: 24px;
   height: 24px;
   background-color: #000;
+  background-image: url(../../../images/vector-pen.svg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-position-x: 50%;
+  background-position-y: center;
   align-self: end;
   margin-bottom: 8px;
   padding: 0;
   border: 1px solid #fff;
-  text-align: center;
   box-sizing: border-box;
 }
 

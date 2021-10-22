@@ -1,0 +1,7 @@
+.elements__footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 25px 21px;
+  max-width: 100%;
+}
+

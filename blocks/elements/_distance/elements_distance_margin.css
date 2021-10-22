@@ -1,0 +1,9 @@
+.elements_distance_margin {
+  margin: 50px 0 66px;
+}
+
+@media screen and (max-width: 768px) {
+  .elements_distance_margin {
+    margin: 36px 0 48px;
+  }
+}

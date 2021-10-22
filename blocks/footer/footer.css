@@ -1,22 +1,7 @@
 .footer {
-  margin: 0 auto;
-  max-width: calc(100% - (200px * 2));
-}
-
-@media screen and (max-width: 1150px) {
-  .footer {
-    max-width: calc(100% - (100px * 2));
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .footer {
-    max-width: calc(100% - (50px * 2));
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .footer {
-    max-width: calc(100% - (19px * 2));
-  }
+  margin: 0;
+  max-width: max-content;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 } 

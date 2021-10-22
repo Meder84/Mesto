@@ -1,46 +1,53 @@
-    /* функциональность popup  */
+    /* функциональность popup  */   
+const profile = document.querySelector('.profile');
 const popup = document.querySelector('.popup');
+const popupOpenButtonElement =  profile.querySelector('.profile__edit-button');
 const popupCloseButtonElement = popup.querySelector('.popup__close-button');
-const popupOpenButtonElement =  document.querySelector('.profile__edit-button');
-const popupSubmitButton = popup.querySelector('.popup__submit-button')
+
+const formElement = popup.querySelector('.popup__form');
+const nameInput = formElement.querySelector('[name="name-input"]');
+const jobInput = formElement.querySelector('[name="job-input"]');
+
+const profileName = profile.querySelector('.profile__name');
+const profileJob = profile.querySelector('.profile__job');
+console.log(profileName)
 
 const openPopup = function() {
   popup.classList.add('popup_opened');
-};
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
+}
 
 const closePopup = function() {
   popup.classList.remove('popup_opened');
-};
+}
 
 popupOpenButtonElement.addEventListener('click', openPopup);
 popupCloseButtonElement.addEventListener('click', closePopup);
-popupSubmitButton.addEventListener('click', closePopup);
 
 
-  /*  Функциональность элемента редактирование  */
-const nameInput = popup.querySelector('.popup__name-input');
-const jobInput = popup.querySelector('.popup__job-input');
+    /*  Функциональность элемента редактирование  */
 
-const profile = document.querySelector('.profile');
-const profileName = profile.querySelector('.profile__name');
-const profileJob = profile.querySelector('.profile__job');
+function formSubmitHandler (evt) {
+  profileName.textContent = nameInput.value;
+  profileJob.textContent = jobInput.value;
 
-const editUserName = function() {
-  if(nameInput.value === '') {
-    return;
-  } else {
-    profileName.textContent = nameInput.value;
-  }
+  evt.preventDefault();
 }
 
-const editUserJob = function() {
-  if(jobInput.value === '') {
-    return;
-  } else {
-    profileJob.textContent = jobInput.value;
-  }
-}
 
-popupSubmitButton.addEventListener('click', editUserName);
-popupSubmitButton.addEventListener('click', editUserJob);
+formElement.addEventListener('submit', formSubmitHandler); 
+
+
+
+
+
+
+
+
+// const editUserName = function() {
+//   
+
+// popupSubmitButton.addEventListener('click', editUserName);
+// popupSubmitButton.addEventListener('click', editUserJob);
 
