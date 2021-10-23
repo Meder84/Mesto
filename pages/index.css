@@ -38,7 +38,7 @@
 @import url(../blocks/elements/__element/elements__element.css);
 @import url(../blocks/elements/__footer/elements__footer.css);
 @import url(../blocks/elements/__lists/elements__lists.css);
-@import url(../blocks/elements/__lists_margin/elements__lists_margin.css);
+@import url(../blocks/content/__elements/content__elements.css);
 
     /*  block footer   */
 @import url(../blocks/footer/footer.css);
