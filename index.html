@@ -13,7 +13,7 @@
   <div class="page">
 
     <header class="header">
-      <a href="#" target="_blank"><img class="logo logo_distance_margin opacity" src="./images/logo.svg"
+      <a href="#" target="_blank"><img class="logo header__logo opacity" src="./images/logo.svg"
           alt="Текст Mesto.">
       </a>
     </header>
@@ -30,64 +30,66 @@
         </button>
       </section>
 
-      <ul class="elements elements_distance_margin">
-        <li class="elements__element">
-          <img class="elements__image" src="./images/element-altai.jpg" alt="Алтай.">
-          <div class="elements__footer">
-            <h2 class="elements__title">Алтай</h2>
-            <button class="elements__heard-button opacity" type="button">
-            </button>
-          </div>
-        </li>
-
-        <li class="elements__element">
-          <img class="elements__image" src="./images/element-baikal.jpg" alt="Байкал.">
-          <div class="elements__footer">
-            <h2 class="elements__title">Байкал</h2>
-            <button class="elements__heard-button opacity" type="button">
-            </button>
-          </div>
-        </li>
-
-        <li class="elements__element">
-          <img class="elements__image" src="./images/element-bonifacio.jpg" alt="Бонифачо.">
-          <div class="elements__footer">
-            <h2 class="elements__title">Бонифачо</h2>
-            <button class="elements__heard-button opacity" type="button">
-            </button>
-          </div>
-        </li>
-
-        <li class="elements__element">
-          <img class="elements__image" src="./images/element-karelia.jpg" alt="Карелия.">
-          <div class="elements__footer">
-            <h2 class="elements__title">Карелия</h2>
-            <button class="elements__heard-button opacity" type="button">
-            </button>
-          </div>
-        </li>
-
-        <li class="elements__element">
-          <img class="elements__image" src="./images/element-kolsky.jpg" alt="Кольский.">
-          <div class="elements__footer">
-            <h2 class="elements__title">Кольский</h2>
-            <button class="elements__heard-button opacity" type="button">
-            </button>
-          </div>
-        </li>
-
-        <li class="elements__element">
-          <img class="elements__image" src="./images/element-kosa.jpg" alt="Коса.">
-          <div class="elements__footer">
-            <h2 class="elements__title">Коса</h2>
-            <button class="elements__heard-button opacity" type="button">
-            </button>
-          </div>
-        </li>
-      </ul>
+      <section class="elements">
+        <ul class="elements__lists  elements__lists_margin">
+          <li class="elements__element">
+            <img class="elements__image" src="./images/element-altai.jpg" alt="Алтай.">
+            <div class="elements__footer">
+              <h2 class="elements__title">Алтай</h2>
+              <button class="elements__heard-button opacity" type="button">
+              </button>
+            </div>
+          </li>
+  
+          <li class="elements__element">
+            <img class="elements__image" src="./images/element-baikal.jpg" alt="Байкал.">
+            <div class="elements__footer">
+              <h2 class="elements__title">Байкал</h2>
+              <button class="elements__heard-button opacity" type="button">
+              </button>
+            </div>
+          </li>
+  
+          <li class="elements__element">
+            <img class="elements__image" src="./images/element-bonifacio.jpg" alt="Бонифачо.">
+            <div class="elements__footer">
+              <h2 class="elements__title">Бонифачо</h2>
+              <button class="elements__heard-button opacity" type="button">
+              </button>
+            </div>
+          </li>
+  
+          <li class="elements__element">
+            <img class="elements__image" src="./images/element-karelia.jpg" alt="Карелия.">
+            <div class="elements__footer">
+              <h2 class="elements__title">Карелия</h2>
+              <button class="elements__heard-button opacity" type="button">
+              </button>
+            </div>
+          </li>
+  
+          <li class="elements__element">
+            <img class="elements__image" src="./images/element-kolsky.jpg" alt="Кольский.">
+            <div class="elements__footer">
+              <h2 class="elements__title">Кольский</h2>
+              <button class="elements__heard-button opacity" type="button">
+              </button>
+            </div>
+          </li>
+  
+          <li class="elements__element">
+            <img class="elements__image" src="./images/element-kosa.jpg" alt="Коса.">
+            <div class="elements__footer">
+              <h2 class="elements__title">Коса</h2>
+              <button class="elements__heard-button opacity" type="button">
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
     </main>
 
-    <footer class="footer footer_distance_margin">
+    <footer class="footer page__footer">
       <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
     </footer>
 
@@ -98,7 +100,7 @@
         <form name="popup-form" class="popup__form" action="#">
           <input class="popup__input" name="name-input" type="text" placeholder="Имя">
           <input class="popup__input" name="job-input" type="text" placeholder="Профессия">
-          <button class="popup__button-submit" type="submit" onclick="closePopup()">
+          <button class="popup__button-submit" type="submit">
             <span class="popup__button-span">Сохранить</span>
           </button>
         </form>

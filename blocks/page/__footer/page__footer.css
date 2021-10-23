@@ -1,5 +1,6 @@
 @media screen and (max-width: 358px) {
-  .footer_distance_margin {
+  .page__footer {
     margin-left: 19px;
   }
 }
+

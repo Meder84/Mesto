@@ -10,7 +10,6 @@ const jobInput = formElement.querySelector('[name="job-input"]');
 
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
-console.log(profileName)
 
 const openPopup = function() {
   popup.classList.add('popup_opened');
@@ -29,10 +28,11 @@ popupCloseButtonElement.addEventListener('click', closePopup);
     /*  Функциональность элемента редактирование  */
 
 function formSubmitHandler (evt) {
+  evt.preventDefault();
+
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-
-  evt.preventDefault();
+  closePopup();
 }
 
 
