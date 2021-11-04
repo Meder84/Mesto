@@ -31,14 +31,18 @@
 
     /*  block elements   */
 @import url(../blocks/elements/elements.css);
-@import url(../blocks/elements/__title/elements__title.css);
-@import url(../blocks/elements/__image/elements__image.css);
-@import url(../blocks/elements/__heard-button/elements__heard-button.css);
-@import url(../blocks/elements/__heard-button/_black/elements__heard-button_black.css);
-@import url(../blocks/elements/__element/elements__element.css);
-@import url(../blocks/elements/__footer/elements__footer.css);
-@import url(../blocks/elements/__lists/elements__lists.css);
 @import url(../blocks/content/__elements/content__elements.css);
+
+
+    /*  block list   */
+@import url(../blocks/list/__title/list__title.css);
+@import url(../blocks/list/__image/list__image.css);
+@import url(../blocks/list/__heard-button/list__heard-button.css);
+@import url(../blocks/list/__heard-button/_black/list__heard-button_black.css);
+@import url(../blocks/list/__element/list__element.css);
+@import url(../blocks/list/__footer/list__footer.css);
+@import url(../blocks/list/list.css);
+@import url(../blocks/list/delete-button/list__delete-button.css);
 
     /*  block footer   */
 @import url(../blocks/footer/footer.css);
@@ -57,5 +61,5 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__button-span/popup__button-span.css);
-@import url(../blocks/popup/_add/popup_add.css);
-@import url(../blocks/popup/_edit/popup_edit.css);
+@import url(../blocks/popup/_add/popup_type_add.css);
+@import url(../blocks/popup/_edit/popup_type_edit.css);

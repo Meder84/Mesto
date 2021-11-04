@@ -1,89 +1,119 @@
-    /*  элементы блока profile  */   
-const profile = document.querySelector('.profile');
-const popupOpenButtonEdit = profile.querySelector('.profile__edit-button');
+// import { initialCards } from "./arr-elements.js";   
+    
+  /*  элементы блока profile  */   
+const profile = document.querySelector('.profile');  
+const popupOpenButtonEdit = profile.querySelector('.profile__edit-button'); 
 const popupOpenButtonAdd = profile.querySelector('.profile__add-button')
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__job');
 
-const popupEdit = document.querySelector('.popup_edit');
+  /*  элементы popup  */ 
+const popup = document.querySelectorAll('.popup');
+
+  /*  элементы блока popup_type_edit  */  
+const popupEdit = document.querySelector('.popup_type_edit');
 const popupCloseButtonEdit = popupEdit.querySelector('.popup__close-button_edit');
 
-const popupAdd = document.querySelector('.popup_add');
-const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add')
-
-      /*  Form popup_edit */
-const formElement = popupEdit.querySelector('[name="popup-form-edit"]');
-const nameInput = formElement.querySelector('[name="name-input"]');
-const jobInput = formElement.querySelector('[name="job-input"]');
-
-
-
-    /*  Функциональность элемента редактировать профиль  */  
-const openPopupEdit = function() {
-  popupEdit.classList.add('popup_opened');
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
+  /*  Form popup_type_edit */
+const formElementEdit = popupEdit.querySelector('[name="popup-form-edit"]');
+const nameInputEdit = formElementEdit.querySelector('[name="name-input"]');
+const jobInputEdit = formElementEdit.querySelector('[name="job-input"]');
+  
+  /*  Функциональность popup открытие и закрытие  */  
+function openPopup(index) {
+    popup[index].classList.add('popup_opened');
+    nameInputEdit.value = profileName.textContent;
+    jobInputEdit.value = profileJob.textContent;
 }
 
-popupOpenButtonEdit.addEventListener('click', openPopupEdit);
-
-const closePopupEdit = function() {
-  popupEdit.classList.remove('popup_opened');
+function closePopup(index) {
+  popup[index].classList.remove('popup_opened');
 }
 
-popupCloseButtonEdit.addEventListener('click', closePopupEdit);
-
-    /*  Функциональность элемента редактировать профиль (событие submit)  */
-function formSubmitHandler (evt) {
+  /*  Функциональность элемента редактировать профиль (событие submit)  */
+function SubmitHandlerEdit (evt) {
   evt.preventDefault();
 
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  closePopupEdit();
-}
-    
-    formElement.addEventListener('submit', formSubmitHandler); 
-
-    /*  Функциональность элемента добавить  */  
-const openPopupAdd = function() {
-  popupAdd.classList.add('popup_opened');
+  profileName.textContent = nameInputEdit.value;
+  profileJob.textContent = jobInputEdit.value;
+  closePopup(0);
 }
 
-const closePopupAdd = function() {
-  popupAdd.classList.remove('popup_opened');
+  /*  Навешивание обработчиков событий на элементов (элемент редактировать) */  
+formElementEdit.addEventListener('submit', SubmitHandlerEdit);
+popupOpenButtonEdit.addEventListener('click', () => openPopup(0));
+popupCloseButtonEdit.addEventListener('click', () => closePopup(0));
+
+/*  элементы блока popup_type_add  */  
+const popupAdd = document.querySelector('.popup_type_add');
+const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
+  
+/*  Form popup_type_add */
+const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
+const nameInputAdd = formElementAdd.querySelector('[name="name-input"]');
+const imageInputAdd = formElementAdd.querySelector('[name="image-input"]');
+const addButtonSubmit = formElementAdd.querySelector('.popup__button-submit');
+
+  /*  Элементы секции elements  */
+const list = document.querySelector('.list');
+const placeTemplate = document.querySelector('#place-template').content; 
+const listElement = placeTemplate.querySelector('.list__element');
+const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
+const placeName = placeTemplate.querySelector('.list__title');
+const placeUrl = placeTemplate.querySelector('.list__image');
+
+function main() {   
+  initialCards.forEach((evt) => {
+    renderItem(evt);
+  })
+
+  addButtonSubmit.addEventListener('click', SubmitHandlerAdd);
 }
 
-popupOpenButtonAdd.addEventListener('click', openPopupAdd);
-popupCloseButtonAdd.addEventListener('click', closePopupAdd);
+function renderItem(evt) {   //Создать разметку. 
+  const placeTempl = placeTemplate.querySelector('.list__element').cloneNode(true);
+
+  placeTempl.querySelector('.list__title').textContent = evt.name;  //Записать значения title.
+  placeTempl.querySelector('.list__image').src = evt.link;  //Записать путь.
+
+  setListeners(placeTempl); // Навесить события.
+
+  list.prepend(placeTempl);
+}
+
+function SubmitHandlerAdd (evt) {
+  evt.preventDefault();
+  const placeTemplName = nameInputAdd.value;
+  const placeTemplUrl = imageInputAdd.value;
+
+  renderItem(
+    {
+      name: placeTemplName,
+      link: placeTemplUrl,
+    }
+  );
+  
+  closePopup(1);
+}
+
+  /*  Удаление элементов  */
+function handleDelete(evt) {
+  evt.target.closest('.list__element').remove();
+}
+
+function setListeners(element) {
+  element.querySelector('.list__delete-button').addEventListener('click', handleDelete)
+}
 
 
-    /*  Карточки  */
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-]; 
+popupOpenButtonAdd.addEventListener('click', () => openPopup(1));
+popupCloseButtonAdd.addEventListener('click', () => closePopup(1));
+
+main();
+
+
+
+
 
 
 
