@@ -61,6 +61,7 @@ const listElement = placeTemplate.querySelector('.list__element');
 const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
 const placeName = placeTemplate.querySelector('.list__title');
 const placeUrl = placeTemplate.querySelector('.list__image');
+const listLikeButton = placeTemplate.querySelector('.list__like-button')
 
 function main() {   
   initialCards.forEach((evt) => {
@@ -79,6 +80,11 @@ function renderItem(evt) {   //Создать разметку.
   setListeners(placeTempl); // Навесить события.
 
   list.prepend(placeTempl);
+
+   /*  Кнопка лайк */
+  placeTempl.querySelector('.list__like-button').addEventListener('click', function(evt) {
+    evt.target.classList.toggle('list__like-button_black')
+  })
 }
 
 function SubmitHandlerAdd (evt) {
@@ -105,7 +111,7 @@ function setListeners(element) {
   element.querySelector('.list__delete-button').addEventListener('click', handleDelete)
 }
 
-
+// listLikeButton.addEventListener('click', likeClick);
 popupOpenButtonAdd.addEventListener('click', () => openPopup(1));
 popupCloseButtonAdd.addEventListener('click', () => closePopup(1));
 
