@@ -67,7 +67,6 @@ function main() {
   initialCards.forEach((evt) => {
     renderItem(evt);
   })
-
   addButtonSubmit.addEventListener('click', SubmitHandlerAdd);
 }
 
@@ -84,7 +83,13 @@ function renderItem(evt) {   //Создать разметку.
    /*  Кнопка лайк */
   placeTempl.querySelector('.list__like-button').addEventListener('click', function(evt) {
     evt.target.classList.toggle('list__like-button_black')
-  })
+  placeTempl.querySelector('.list__image').addEventListener('click', function(evt) {
+    popupImagePlace.src = evt.target.src;
+    popupImagePlace.alt = evt.currentTarget.alt;
+    popupCaptionPlace.textContent = evt.currentTarget.alt;
+    openPopup(2);
+  });
+  });
 }
 
 function SubmitHandlerAdd (evt) {
@@ -98,7 +103,6 @@ function SubmitHandlerAdd (evt) {
       link: placeTemplUrl,
     }
   );
-  
   closePopup(1);
 }
 
@@ -111,12 +115,21 @@ function setListeners(element) {
   element.querySelector('.list__delete-button').addEventListener('click', handleDelete)
 }
 
-// listLikeButton.addEventListener('click', likeClick);
 popupOpenButtonAdd.addEventListener('click', () => openPopup(1));
 popupCloseButtonAdd.addEventListener('click', () => closePopup(1));
 
 main();
 
+
+  /*  Открыть изображения по ближе  */
+/*Элементы popup_type_place   */
+const popup_type_place = document.querySelector('.popup_type_place');
+const popupContainerPlace = popup_type_place.querySelector('.popup__container-place');
+const popupCloseButtonPlace = popup_type_place.querySelector('.popup__close-button_place');
+const popupImagePlace = popup_type_place.querySelector('.popup__image');
+const popupCaptionPlace = popup_type_place.querySelector('.popup__caption');
+
+popupCloseButtonPlace.addEventListener('click', () => closePopup(2));
 
 
 
