@@ -1,5 +1,3 @@
-// import { initialCards } from "./arr-elements.js";   
-    
   /*  элементы блока profile  */   
 const profile = document.querySelector('.profile');  
 const popupOpenButtonEdit = profile.querySelector('.profile__edit-button'); 
@@ -75,6 +73,14 @@ function renderItem(evt) {   //Создать разметку.
 
   placeTempl.querySelector('.list__title').textContent = evt.name;  //Записать значения title.
   placeTempl.querySelector('.list__image').src = evt.link;  //Записать путь.
+  placeTempl.querySelector('.list__image').alt = evt.name;  
+
+    /*  Открыть изображения по ближе  */
+  placeTempl.querySelector('.list__image').addEventListener('click', function(evt) {
+    popupImagePlace.src = evt.target.src;
+    popupCaptionPlace.textContent = evt.target.alt;
+    openPopup(2);
+  });
 
   setListeners(placeTempl); // Навесить события.
 
@@ -82,13 +88,7 @@ function renderItem(evt) {   //Создать разметку.
 
    /*  Кнопка лайк */
   placeTempl.querySelector('.list__like-button').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('list__like-button_black')
-  placeTempl.querySelector('.list__image').addEventListener('click', function(evt) {
-    popupImagePlace.src = evt.target.src;
-    popupImagePlace.alt = evt.currentTarget.alt;
-    popupCaptionPlace.textContent = evt.currentTarget.alt;
-    openPopup(2);
-  });
+    evt.target.classList.toggle('list__like-button_black');
   });
 }
 
@@ -120,8 +120,6 @@ popupCloseButtonAdd.addEventListener('click', () => closePopup(1));
 
 main();
 
-
-  /*  Открыть изображения по ближе  */
 /*Элементы popup_type_place   */
 const popup_type_place = document.querySelector('.popup_type_place');
 const popupContainerPlace = popup_type_place.querySelector('.popup__container-place');

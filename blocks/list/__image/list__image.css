@@ -10,7 +10,5 @@
 
 .list__image:hover {
   cursor: pointer;
-  opacity: 0.9;
-  transition: opacity 0.3s linear;
 }
 
