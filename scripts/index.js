@@ -62,7 +62,10 @@ const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
 const placeName = placeTemplate.querySelector('.list__title');
 const listLikeButton = placeTemplate.querySelector('.list__like-button')
 
-initialCards.map(createCard);
+initialCards.forEach (data => {
+  const newCard = createCard(data);
+  list.append(newCard);
+});
 
 function createCard (evt) {   //Создать разметку. 
   const placeTempl = placeTemplate.querySelector('.list__element').cloneNode(true);
@@ -79,8 +82,6 @@ function createCard (evt) {   //Создать разметку.
   });
 
   setListeners(placeTempl); // Навесить события.
-
-  list.append(placeTempl);
 
    /*  Кнопка лайк */
   placeTempl.querySelector('.list__like-button').addEventListener('click', function(evt) {
