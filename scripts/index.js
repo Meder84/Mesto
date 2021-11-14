@@ -84,8 +84,10 @@ function createCard (evt) {   //Создать разметку.
   setListeners(placeTempl); // Навесить события.
 
    /*  Кнопка лайк */
-  placeTempl.querySelector('.list__like-button').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('list__like-button_black');
+  placeTempl.addEventListener('click', function(evt) {
+    if(evt.target.classList.contains('list__like-button')){
+      evt.target.classList.toggle('list__like-button_black');
+    }
   });
   return placeTempl;
 }
@@ -110,8 +112,7 @@ function submitHandlerAdd (evt) {
     }
   ));
 
-  nameInputAdd.value = '';
-  imageInputAdd.value = '';
+  formElementAdd.reset();
 
   closePopup(popupAdd);
 }

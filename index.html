@@ -13,20 +13,32 @@
   <div class="page">
 
     <header class="header">
-      <a href="#" target="_blank"><img class="logo header__logo opacity" src="./images/logo.svg"
+      <a href="#" target="_blank">
+        <img 
+          class="logo header__logo opacity" 
+          src="./images/logo.svg"
           alt="Текст Mesto.">
       </a>
     </header>
 
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar opacity" src="./images/avatar.jpg" alt="аватар.">
+        <img 
+          class="profile__avatar opacity" 
+          src="./images/avatar.jpg" 
+          alt="аватар.">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button opacity" type="button"></button>
+          <button 
+            class="profile__edit-button opacity" 
+            type="button">
+          </button>
           <p class="profile__job">Исследователь океана</p>
         </div>
-        <button class="profile__add-button opacity" type="button"></button>
+        <button 
+          class="profile__add-button opacity" 
+          type="button">
+        </button>
       </section>
 
       <section class="elements content__elements">
@@ -42,11 +54,26 @@
     <section class="popup popup_type_edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <button class="popup__close-button popup__close-button_edit opacity" type="button"></button>
-        <form name="popup-form-edit" class="popup__form" action="#">
-          <input class="popup__input" name="name-input" type="text" placeholder="Имя">
-          <input class="popup__input" name="job-input" type="text" placeholder="Профессия">
-          <button class="popup__button-submit" type="submit">
+        <button 
+          class="popup__close-button popup__close-button_edit opacity" 
+          type="button"></button>
+        <form 
+          class="form" 
+          name="popup-form-edit" 
+          action="#">
+          <input 
+            class="form__input" 
+            name="name-input" 
+            type="text" 
+            placeholder="Имя">
+          <input 
+            class="form__input" 
+            name="job-input" 
+            type="text" 
+            placeholder="Профессия">
+          <button 
+            class="form__button" 
+            type="submit">
             Сохранить
           </button>
         </form>
@@ -56,11 +83,27 @@
     <section class="popup popup_type_add">
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
-        <button class="popup__close-button popup__close-button_add opacity" type="button"></button>
-        <form class="popup__form" name="popup-form-add" action="#">
-          <input class="popup__input" name="name-input" type="text" placeholder="Название">
-          <input class="popup__input" name="image-input" type="text" placeholder="Ссылка на картинку">
-          <button class="popup__button-submit" type="submit">
+        <button 
+          class="popup__close-button popup__close-button_add opacity" 
+          type="button">
+        </button>
+        <form 
+          class="form" 
+          name="popup-form-add" 
+          action="#">
+          <input 
+            class="form__input" 
+            name="name-input"
+            type="text" 
+            placeholder="Название">
+          <input 
+            class="form__input" 
+            name="image-input" 
+            type="text" 
+            placeholder="Ссылка на картинку">
+          <button 
+            class="form__button" 
+            type="submit">
             Создать
           </button>
         </form>
@@ -68,16 +111,27 @@
     </section>
     <section class="popup popup_type_place">
       <figure class="popup__container-place">
-        <button class="popup__close-button popup__close-button_place opacity" type="button"></button>
-        <img class="popup__image" src="./images/element-bonifacio.jpg" alt="по ближе.">
+        <button 
+          class="popup__close-button popup__close-button_place opacity" 
+          type="button">
+        </button>
+        <img 
+          class="popup__image" 
+          src="./images/element-bonifacio.jpg" 
+          alt="по ближе.">
         <figcaption class="popup__caption">
         </figcaption>
       </figure>
     </section>
 
-    <template class="list" id="place-template">
+    <template 
+      class="list" 
+      id="place-template">
       <li class="list__element">
-        <button class="list__delete-button opacity" type="button"></button>
+        <button 
+          class="list__delete-button opacity" 
+          type="button">
+        </button>
         <img class="list__image" src="#" alt="">
         <div class="list__footer">
           <h2 class="list__title"></h2>
@@ -87,6 +141,7 @@
     </template>
 
     <script src="./scripts/arr-elements.js"></script>
+    <!-- <script src="./scripts/validate.js"></script> -->
     <script src="./scripts/index.js"></script>
   </div>
 </body>
