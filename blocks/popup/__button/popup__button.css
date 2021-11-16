@@ -1,5 +1,5 @@
-.form__button {
-  margin: 48px 0 0;
+.popup__button {
+  margin: 30px 0 0;
   padding: 0;
   width: 100%;
   font-weight: 400;
@@ -14,14 +14,14 @@
   border: none;
 }
 
-.form__button:hover {
+.popup__button:hover {
   background-color: rgba(0, 0, 0, .8);
   transition: 0.3s linear;
   cursor: pointer;
 }
 
 @media screen and (max-width: 530px) {
-  .form__button {
+  .popup__button {
     min-height: 46px;
     margin-top: 45px;
     font-size: 14px;

@@ -13,10 +13,11 @@ const popupCloseButtonEdit = popupEdit.querySelector('.popup__close-button_edit'
 const formElementEdit = popupEdit.querySelector('[name="popup-form-edit"]');
 const nameInputEdit = formElementEdit.querySelector('[name="name-input"]');
 const jobInputEdit = formElementEdit.querySelector('[name="job-input"]');
-  
+
   /*  Функциональность popup открытие и закрытие  */  
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupEsc);
 }
 
 function closePopup(popup) {
@@ -50,8 +51,8 @@ const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
   
 /*  Form popup_type_add */
 const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
-const nameInputAdd = formElementAdd.querySelector('[name="name-input"]');
-const imageInputAdd = formElementAdd.querySelector('[name="image-input"]');
+const nameInputAdd = formElementAdd.querySelector('[name="description-input"]');
+const imageInputAdd = formElementAdd.querySelector('[name="url-input"]');
 const buttonSubmitAdd = formElementAdd.querySelector('.popup__button-submit');
 
   /*  Элементы секции elements  */
@@ -132,9 +133,25 @@ function setListeners(element) {
 popupOpenButtonAdd.addEventListener('click', () => openPopup(popupAdd));
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAdd));
 
+  /*  Закрытие попапа кликом на оверлей  */
+function closePopupByClickOverlay (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
 
+const popupAll = [...document.querySelectorAll('.popup')];
+popupAll.forEach((element) => {
+  (element.addEventListener('click', closePopupByClickOverlay));
+});
 
-
+  /*  Закрытие popup нажатием Esc   */
+function closePopupEsc(evt) {
+  if (evt.key === 'Escape') {
+    closePopup(document.querySelector('.popup_opened'));
+    }
+}
+  
 
 
 

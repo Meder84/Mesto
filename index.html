@@ -56,23 +56,43 @@
         <h2 class="popup__title">Редактировать профиль</h2>
         <button 
           class="popup__close-button popup__close-button_edit opacity" 
-          type="button"></button>
+          type="button">
+        </button>
         <form 
-          class="form" 
+          class="popup__form" 
           name="popup-form-edit" 
-          action="#">
-          <input 
-            class="form__input" 
+          action="#"
+          novalidate>
+          <input
+            class="popup__input" 
+            type="text" 
+            id="name-input"
             name="name-input" 
-            type="text" 
+            required
+            minlength="2"
+            maxlength="40"
+            autocomplete="off" 
             placeholder="Имя">
-          <input 
-            class="form__input" 
-            name="job-input" 
+            <span 
+              class="error" 
+              id="name-input-error">
+            </span>
+          <input
+            class="popup__input" 
             type="text" 
+            id="job-input"
+            name="job-input" 
+            required
+            minlength="2"
+            maxlength="200"
+            autocomplete="off" 
             placeholder="Профессия">
+            <span 
+              class="error" 
+              id="job-input-error">
+            </span>
           <button 
-            class="form__button" 
+            class="popup__button" 
             type="submit">
             Сохранить
           </button>
@@ -88,21 +108,38 @@
           type="button">
         </button>
         <form 
-          class="form" 
+          class="popup__form" 
           name="popup-form-add" 
-          action="#">
-          <input 
-            class="form__input" 
-            name="name-input"
+          action="#"
+          novalidate>
+          <input
+            class="popup__input" 
             type="text" 
+            name="description-input"
+            id="description-input"
+            required
+            minlength="2"
+            maxlength="30"
+            autocomplete="off" 
             placeholder="Название">
-          <input 
-            class="form__input" 
-            name="image-input" 
-            type="text" 
+            <span 
+              class="error" 
+              id="description-input-error">
+            </span>
+          <input
+            class="popup__input" 
+            type="url" 
+            name="url-input"
+            id="url-input" 
+            required
+            autocomplete="off" 
             placeholder="Ссылка на картинку">
+            <span 
+              class="error" 
+              id="url-input-error">
+            </span>
           <button 
-            class="form__button" 
+            class="popup__button" 
             type="submit">
             Создать
           </button>
@@ -141,7 +178,7 @@
     </template>
 
     <script src="./scripts/arr-elements.js"></script>
-    <!-- <script src="./scripts/validate.js"></script> -->
+    <script src="./scripts/validate.js"></script>
     <script src="./scripts/index.js"></script>
   </div>
 </body>
