@@ -65,8 +65,9 @@ function hasInvalidInput(inputList) {
 function toggleButtonState (inputList, submitButtonSelector, inactiveButtonClass) {
   if(hasInvalidInput(inputList)) {
     submitButtonSelector.classList.add('popup__button_desabled');
-    submitButtonSelector.disabled = false;
+    submitButtonSelector.disabled = true;
   } else {
     submitButtonSelector.classList.remove('popup__button_desabled');
+    submitButtonSelector.disabled = false;
   }  
 }
