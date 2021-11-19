@@ -14,13 +14,40 @@ const formElementEdit = popupEdit.querySelector('[name="popup-form-edit"]');
 const nameInputEdit = formElementEdit.querySelector('[name="name-input"]');
 const jobInputEdit = formElementEdit.querySelector('[name="job-input"]');
 
+/*  элементы блока popup_type_add  */  
+const popupAdd = document.querySelector('.popup_type_add');
+const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
+  
+/*  Form popup_type_add */
+const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
+const nameInputAdd = formElementAdd.querySelector('[name="description-input"]');
+const imageInputAdd = formElementAdd.querySelector('[name="url-input"]');
+const buttonSubmitAdd = formElementAdd.querySelector('.popup__button');
+
+  /*  Элементы секции elements  */
+const list = document.querySelector('.list');
+const placeTemplate = document.querySelector('#place-template').content; 
+const listElement = placeTemplate.querySelector('.list__element');
+const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
+const placeName = placeTemplate.querySelector('.list__title');
+const listLikeButton = placeTemplate.querySelector('.list__like-button')
+
+  /*  Закрытие popup нажатием Esc   */
+function closePopupEsc(evt) {
+  const closeEvtPopup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(closeEvtPopup );
+    }
+}
+
   /*  Функциональность popup открытие и закрытие  */  
 function openPopup(popup) {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupEsc);
+  document.addEventListener('keydown', closePopupEsc);
+  popup.classList.add('popup_opened');
 }
 
 function closePopup(popup) {
+  document.removeEventListener('keydown', closePopupEsc);
   popup.classList.remove('popup_opened');
 }
 
@@ -28,7 +55,7 @@ function closePopup(popup) {
 function editProfile() {
   nameInputEdit.value = profileName.textContent;
   jobInputEdit.value = profileJob.textContent;
-  openPopup(popupEdit)
+  openPopup(popupEdit);
 }
 
   /*  Получение значения из блока popup_type_edit  */
@@ -45,23 +72,6 @@ formElementEdit.addEventListener('submit', submitHandlerEdit);
 popupOpenButtonEdit.addEventListener('click', () => editProfile());
 popupCloseButtonEdit.addEventListener('click', () => closePopup(popupEdit));
 
-/*  элементы блока popup_type_add  */  
-const popupAdd = document.querySelector('.popup_type_add');
-const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
-  
-/*  Form popup_type_add */
-const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
-const nameInputAdd = formElementAdd.querySelector('[name="description-input"]');
-const imageInputAdd = formElementAdd.querySelector('[name="url-input"]');
-const buttonSubmitAdd = formElementAdd.querySelector('.popup__button-submit');
-
-  /*  Элементы секции elements  */
-const list = document.querySelector('.list');
-const placeTemplate = document.querySelector('#place-template').content; 
-const listElement = placeTemplate.querySelector('.list__element');
-const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
-const placeName = placeTemplate.querySelector('.list__title');
-const listLikeButton = placeTemplate.querySelector('.list__like-button')
 
 initialCards.forEach (data => {
   const newCard = createCard(data);
@@ -78,6 +88,7 @@ function createCard (evt) {   //Создать разметку.
     /*  Открыть изображения по ближе  */
   placeUrl.addEventListener('click', function(evt) {
     popupImagePlace.src = evt.target.src;
+    popupImagePlace.alt = evt.target.alt;
     popupCaptionPlace.textContent = evt.target.alt;
     openPopup(popupPlace);
   });
@@ -114,6 +125,8 @@ function submitHandlerAdd (evt) {
   ));
 
   formElementAdd.reset();
+  buttonSubmitAdd.disabled = true;
+  buttonSubmitAdd.classList.add('popup__button_desabled');
 
   closePopup(popupAdd);
 }
@@ -145,12 +158,7 @@ popupAll.forEach((element) => {
   (element.addEventListener('click', closePopupByClickOverlay));
 });
 
-  /*  Закрытие popup нажатием Esc   */
-function closePopupEsc(evt) {
-  if (evt.key === 'Escape') {
-    closePopup(document.querySelector('.popup_opened'));
-    }
-}
+
   
 
 
