@@ -34,9 +34,9 @@ const listLikeButton = placeTemplate.querySelector('.list__like-button')
 
   /*  Закрытие popup нажатием Esc   */
 function closePopupEsc(evt) {
-  const closeEvtPopup = document.querySelector('.popup_opened');
+  const closeCurrentPopup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
-    closePopup(closeEvtPopup );
+    closePopup(closeCurrentPopup);
     }
 }
 
