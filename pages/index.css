@@ -35,14 +35,17 @@
 
 
     /*  block list   */
-@import url(../blocks/list/__title/list__title.css);
-@import url(../blocks/list/__image/list__image.css);
-@import url(../blocks/list/__like-button/list__like-button.css);
-@import url(../blocks/list/__like-button/_black/list__like-button_black.css);
-@import url(../blocks/list/__element/list__element.css);
-@import url(../blocks/list/__footer/list__footer.css);
 @import url(../blocks/list/list.css);
-@import url(../blocks/list/delete-button/list__delete-button.css);
+
+    /*  block card   */
+@import url(../blocks/card/__title/card__title.css);
+@import url(../blocks/card/__image/card__image.css);
+@import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__like-button/_black/card__like-button_black.css);
+@import url(../blocks/card/__element/card__element.css);
+@import url(../blocks/card/__footer/card__footer.css);
+@import url(../blocks/card/card.css);
+@import url(../blocks/card/delete-button/card__delete-button.css);
 
     /*  block footer   */
 @import url(../blocks/footer/footer.css);

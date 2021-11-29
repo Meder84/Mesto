@@ -27,10 +27,10 @@ const buttonSubmitAdd = formElementAdd.querySelector('.popup__button');
   /*  Элементы секции elements  */
 const list = document.querySelector('.list');
 const placeTemplate = document.querySelector('#place-template').content; 
-const listElement = placeTemplate.querySelector('.list__element');
-const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
-const placeName = placeTemplate.querySelector('.list__title');
-const listLikeButton = placeTemplate.querySelector('.list__like-button')
+const listElement = placeTemplate.querySelector('.card__element');
+const listDeleteButton = placeTemplate.querySelector('.card__delete-button');
+const placeName = placeTemplate.querySelector('.card__title');
+const listLikeButton = placeTemplate.querySelector('.card__like-button')
 
   /*  Закрытие popup нажатием Esc   */
 function closePopupEsc(evt) {
@@ -79,9 +79,9 @@ initialCards.forEach (data => {
 });
 
 function createCard (evt) {   //Создать разметку. 
-  const placeTempl = placeTemplate.querySelector('.list__element').cloneNode(true);
-  const placeUrl = placeTempl.querySelector('.list__image');
-  placeTempl.querySelector('.list__title').textContent = evt.name;  //Записать значения title.
+  const placeTempl = placeTemplate.querySelector('.card__element').cloneNode(true);
+  const placeUrl = placeTempl.querySelector('.card__image');
+  placeTempl.querySelector('.card__title').textContent = evt.name;  //Записать значения title.
   placeUrl.src = evt.link;  //Записать путь.
   placeUrl.alt = evt.name;  
 
@@ -97,8 +97,8 @@ function createCard (evt) {   //Создать разметку.
 
    /*  Кнопка лайк */
   placeTempl.addEventListener('click', function(evt) {
-    if(evt.target.classList.contains('list__like-button')){
-      evt.target.classList.toggle('list__like-button_black');
+    if(evt.target.classList.contains('card__like-button')){
+      evt.target.classList.toggle('card__like-button_black');
     }
   });
   return placeTempl;
@@ -136,11 +136,11 @@ popupCloseButtonPlace.addEventListener('click', () => closePopup(popupPlace));
 
   /*  Удаление элементов  */
 function handleDelete(evt) {
-  evt.target.closest('.list__element').remove();
+  evt.target.closest('.card__element').remove();
 }
 
 function setListeners(element) {
-  element.querySelector('.list__delete-button').addEventListener('click', handleDelete)
+  element.querySelector('.card__delete-button').addEventListener('click', handleDelete)
 }
 
 popupOpenButtonAdd.addEventListener('click', () => openPopup(popupAdd));
