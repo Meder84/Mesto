@@ -35,7 +35,7 @@ export const popupCaptionPlace = popupPlace.querySelector('.popup__caption');
     /*  Элементы секции elements  */
   export const list = document.querySelector('.list');
   export const placeTemplate = document.querySelector('#card-template').content; 
-  export const listElement = placeTemplate.querySelector('.card');
-  export const listDeleteButton = placeTemplate.querySelector('.card__delete-button');
+  export const cardElement = placeTemplate.querySelector('.card');
+  export const cardDeleteButton = placeTemplate.querySelector('.card__delete-button');
   export const placeName = placeTemplate.querySelector('.card__title');
-  export const listLikeButton = placeTemplate.querySelector('.card__like-button')
+  export const cardLikeButton = placeTemplate.querySelector('.card__like-button')

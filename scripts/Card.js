@@ -3,10 +3,18 @@ import {initialCards} from './arr-elements.js';
   /*  Элементы popup_type_place   */
 import {popupPlace, popupContainerPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
 
-class Card {
-  constructor(data) {
+/*  consts Элемента секции elements  */
+import {list, placeTemplate, cardElement, cardDeleteButton, placeName, cardLikeButton} from './consts.js';
+
+/*  Закрытие popup нажатием Esc   */
+import { closePopupEsc } from './utils.js';
+
+
+export class Card {
+  constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._cardSelector = cardSelector;
   }
 
   _getTemplate() {
@@ -57,6 +65,7 @@ class Card {
   }
 
   _handleOpenPopup() {
+    document.addEventListener('keydown', closePopupEsc);
     popupImagePlace.src = this._link;
     popupImagePlace.alt = this._name;
     popupCaptionPlace.textContent = this._name;
@@ -64,6 +73,7 @@ class Card {
   }
 
   _handleClosePopup() {
+    document.removeEventListener('keydown', closePopupEsc);
     popupImagePlace.src = '';
     popupImagePlace.alt = '';
     popupCaptionPlace.textContent = '';
@@ -79,76 +89,6 @@ class Card {
 initialCards.forEach((item) => {
   const card = new Card(item); // передаём объект аргументом
   const cardElement = card.generateCard();
-  document.querySelector('.list').append(cardElement);
+  list.append(cardElement);
 }); 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /*  элементы блока popup_type_add  */  
-// const popupAdd = document.querySelector('.popup_type_add');
-// const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
-  
-// /*  Form popup_type_add */
-// const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
-// const nameInputAdd = formElementAdd.querySelector('[name="description-input"]');
-// const imageInputAdd = formElementAdd.querySelector('[name="url-input"]');
-// const buttonSubmitAdd = formElementAdd.querySelector('.popup__button');
-
-//   /*  Элементы секции elements  */
-// const cardList = document.querySelector('.list');
-// const placeTemplate = document.querySelector('#place-template').content; 
-// const listElement = placeTemplate.querySelector('.list__element');
-// const listDeleteButton = placeTemplate.querySelector('.list__delete-button');
-// const placeName = placeTemplate.querySelector('.list__title');
-// const listLikeButton = placeTemplate.querySelector('.list__like-button')
-
-// export class Card {
-//   constructor(cardSelector) {
-//     this._cardSelector = cardSelector;
-//   }
-
-//   _getTemplate() {
-//     const cardElement = document
-//       .querySelector(this._cardSelector)
-//       .content
-//       .querySelector('.list__element')
-//       .cloneNode(true);
-
-//     return cardElement;
-//   }
-
-//   generateCard() {
-//     this._element = this._getTemplate();
-//     this._setEventListeners();
-
-//     this._element.querySelector('.card__image').style.backgroundImage = `url(${this._image})`;
-//     this._element.querySelector('.card__title').textContent = this._title;
-
-//     return this._element;
-//   }
-  
-//   _handleOpenPopup() {
-//     popupImage.src = this._image;
-//     popupElement.classList.add('popup_opened');
-//   }
-
-//   _handleClosePopup() {
-//     popupImage.src = '';
-//     popupElement.classList.remove('popup_opened');
-//   }
-// }
