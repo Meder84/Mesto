@@ -146,6 +146,7 @@
         </form>
       </div>
     </section>
+
     <section class="popup popup_type_place">
       <figure class="popup__container-place">
         <button 
@@ -162,9 +163,9 @@
     </section>
 
     <template 
-      class="card" 
-      id="place-template">
-      <article class="card__element">
+      class="card-template" 
+      id="card-template">
+      <article class="card">
         <button 
           class="card__delete-button opacity" 
           type="button">
@@ -177,9 +178,10 @@
       </article>
     </template>
 
-    <script src="./scripts/arr-elements.js" defer></script>
-    <script src="./scripts/validate.js" defer></script>
-    <script src="./scripts/index.js" defer></script>
+    
+    <script type="module" src="./scripts/validate.js" defer></script>
+    <script type="module" src="./scripts/index.js" defer></script>
+    <script type="module" src="./scripts/Card.js" defer></script>
   </div>
 </body>
 </html>

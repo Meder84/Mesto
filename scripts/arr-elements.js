@@ -1,5 +1,4 @@
-    /*  Карточки  */
-const initialCards = [
+export const initialCards = [
   {
     name: 'Алтай',
     link: './images/element-altai.jpg'

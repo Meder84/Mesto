@@ -1,36 +1,24 @@
-  /*  элементы блока profile  */   
-const profile = document.querySelector('.profile');  
-const popupOpenButtonEdit = profile.querySelector('.profile__edit-button'); 
-const popupOpenButtonAdd = profile.querySelector('.profile__add-button')
-const profileName = profile.querySelector('.profile__name');
-const profileJob = profile.querySelector('.profile__job');
-
-  /*  элементы блока popup_type_edit  */  
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupCloseButtonEdit = popupEdit.querySelector('.popup__close-button_edit');
-
-  /*  Form popup_type_edit */
-const formElementEdit = popupEdit.querySelector('[name="popup-form-edit"]');
-const nameInputEdit = formElementEdit.querySelector('[name="name-input"]');
-const jobInputEdit = formElementEdit.querySelector('[name="job-input"]');
-
-/*  элементы блока popup_type_add  */  
-const popupAdd = document.querySelector('.popup_type_add');
-const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
+  /*  consts элемента блока profile  */  
+import {profile, popupOpenButtonEdit, popupOpenButtonAdd, profileName, profileJob} from './consts.js';
   
-/*  Form popup_type_add */
-const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
-const nameInputAdd = formElementAdd.querySelector('[name="description-input"]');
-const imageInputAdd = formElementAdd.querySelector('[name="url-input"]');
-const buttonSubmitAdd = formElementAdd.querySelector('.popup__button');
+  /*  consts элемента блока popup_type_edit  */  
+import {popupEdit, popupCloseButtonEdit} from './consts.js';
 
-  /*  Элементы секции elements  */
-const list = document.querySelector('.list');
-const placeTemplate = document.querySelector('#place-template').content; 
-const listElement = placeTemplate.querySelector('.card__element');
-const listDeleteButton = placeTemplate.querySelector('.card__delete-button');
-const placeName = placeTemplate.querySelector('.card__title');
-const listLikeButton = placeTemplate.querySelector('.card__like-button')
+  /*  consts Form popup_type_edit */
+import {formElementEdit, nameInputEdit, jobInputEdit} from './consts.js';
+
+  /*  consts элемента блока popup_type_add  */  
+import {popupAdd, popupCloseButtonAdd} from './consts.js';
+
+  /*  consts Form popup_type_add */
+import {formElementAdd, nameInputAdd, imageInputAdd, buttonSubmitAdd} from './consts.js';
+
+    /*  Элементы popup_type_place   */
+import {popupPlace, popupContainerPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
+
+  /*  consts Элемента секции elements  */
+import {list, placeTemplate, listElement, listDeleteButton, placeName, listLikeButton} from './consts.js';
+
 
   /*  Закрытие popup нажатием Esc   */
 function closePopupEsc(evt) {
@@ -73,43 +61,36 @@ popupOpenButtonEdit.addEventListener('click', () => editProfile());
 popupCloseButtonEdit.addEventListener('click', () => closePopup(popupEdit));
 
 
-initialCards.forEach (data => {
-  const newCard = createCard(data);
-  list.append(newCard);
-});
+// initialCards.forEach (data => {
+//   const newCard = createCard(data);
+//   list.append(newCard);
+// });
 
-function createCard (evt) {   //Создать разметку. 
-  const placeTempl = placeTemplate.querySelector('.card__element').cloneNode(true);
-  const placeUrl = placeTempl.querySelector('.card__image');
-  placeTempl.querySelector('.card__title').textContent = evt.name;  //Записать значения title.
-  placeUrl.src = evt.link;  //Записать путь.
-  placeUrl.alt = evt.name;  
+// function createCard (evt) {   //Создать разметку. 
+//   const placeTempl = placeTemplate.querySelector('.card').cloneNode(true);
+//   const placeUrl = placeTempl.querySelector('.card__image');
+//   placeTempl.querySelector('.card__title').textContent = evt.name;  //Записать значения title.
+//   placeUrl.src = evt.link;  //Записать путь.
+//   placeUrl.alt = evt.name;  
 
-    /*  Открыть изображения по ближе  */
-  placeUrl.addEventListener('click', function(evt) {
-    popupImagePlace.src = evt.target.src;
-    popupImagePlace.alt = evt.target.alt;
-    popupCaptionPlace.textContent = evt.target.alt;
-    openPopup(popupPlace);
-  });
+//     /*  Открыть изображения по ближе  */
+//   placeUrl.addEventListener('click', function(evt) {
+//     popupImagePlace.src = evt.target.src;
+//     popupImagePlace.alt = evt.target.alt;
+//     popupCaptionPlace.textContent = evt.target.alt;
+//     openPopup(popupPlace);
+//   });
 
-  setListeners(placeTempl); // Навесить события.
+//   setListeners(placeTempl); // Навесить события.
 
-   /*  Кнопка лайк */
-  placeTempl.addEventListener('click', function(evt) {
-    if(evt.target.classList.contains('card__like-button')){
-      evt.target.classList.toggle('card__like-button_black');
-    }
-  });
-  return placeTempl;
-}
-
-/*Элементы popup_type_place   */
-const popupPlace = document.querySelector('.popup_type_place');
-const popupContainerPlace = popupPlace.querySelector('.popup__container-place');
-const popupCloseButtonPlace = popupPlace.querySelector('.popup__close-button_place');
-const popupImagePlace = popupPlace.querySelector('.popup__image');
-const popupCaptionPlace = popupPlace.querySelector('.popup__caption');
+//    /*  Кнопка лайк */
+//   placeTempl.addEventListener('click', function(evt) {
+//     if(evt.target.classList.contains('card__like-button')){
+//       evt.target.classList.toggle('card__like-button_black');
+//     }
+//   });
+//   return placeTempl;
+// }
 
   /*  Получение значения из блока popup_type_add  */
 function submitHandlerAdd (evt) {
@@ -134,14 +115,14 @@ function submitHandlerAdd (evt) {
 formElementAdd.addEventListener('submit', submitHandlerAdd);
 popupCloseButtonPlace.addEventListener('click', () => closePopup(popupPlace));
 
-  /*  Удаление элементов  */
-function handleDelete(evt) {
-  evt.target.closest('.card__element').remove();
-}
+//   /*  Удаление элементов  */
+// function handleDelete(evt) {
+//   evt.target.closest('.card').remove();
+// }
 
-function setListeners(element) {
-  element.querySelector('.card__delete-button').addEventListener('click', handleDelete)
-}
+// function setListeners(element) {
+//   element.querySelector('.card__delete-button').addEventListener('click', handleDelete)
+// }
 
 popupOpenButtonAdd.addEventListener('click', () => openPopup(popupAdd));
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAdd));

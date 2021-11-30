@@ -42,10 +42,12 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
 @import url(../blocks/card/__like-button/_black/card__like-button_black.css);
-@import url(../blocks/card/__element/card__element.css);
 @import url(../blocks/card/__footer/card__footer.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/delete-button/card__delete-button.css);
+
+    /*  block list   */
+@import url(../blocks/card-template/card-template.css);
 
     /*  block footer   */
 @import url(../blocks/footer/footer.css);
