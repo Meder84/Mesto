@@ -1,40 +1,44 @@
   /*  consts элемента блока profile  */  
-import { Card } from './Card.js';
-import {profile, popupOpenButtonEdit, popupOpenButtonAdd, profileName, profileJob} from './consts.js';
+  import {profile, popupOpenButtonEdit, popupOpenButtonAdd, profileName, profileJob} from './consts.js';
   
   /*  consts элемента блока popup_type_edit  */  
-import {popupEdit, popupCloseButtonEdit} from './consts.js';
-
+  import {popupEdit, popupCloseButtonEdit} from './consts.js';
+  
   /*  consts Form popup_type_edit */
-import {formElementEdit, nameInputEdit, jobInputEdit} from './consts.js';
-
+  import {formElementEdit, nameInputEdit, jobInputEdit} from './consts.js';
+  
   /*  consts элемента блока popup_type_add  */  
-import {popupAdd, popupCloseButtonAdd} from './consts.js';
-
+  import {popupAdd, popupCloseButtonAdd} from './consts.js';
+  
   /*  consts Form popup_type_add */
-import {formElementAdd, nameInputAdd, imageInputAdd, buttonSubmitAdd} from './consts.js';
-
-    /*  Элементы popup_type_place   */
-import {popupPlace, popupContainerPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
-
+  import {formElementAdd, nameInputAdd, imageInputAdd, buttonSubmitAdd} from './consts.js';
+  
+  /*  Элементы popup_type_place   */
+  import {popupPlace, popupContainerPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
+  
   /*  consts Элемента секции elements  */
-import {list, placeTemplate, cardElement, cardDeleteButton, placeName, cardLikeButton} from './consts.js';
-
-
+  import {list, placeTemplate, cardElement, cardDeleteButton, placeName, cardLikeButton} from './consts.js';
+  
+  
   /*  Закрытие popup нажатием Esc   */
-import {closePopupEsc} from './utils.js';
-
+  import {closePopupEsc} from './utils.js';
+  
   /*  Функциональность popup открытие и закрытие  */  
-import { openPopup, closePopup } from './utils.js';
-
+  import { openPopup, closePopup } from './utils.js';
+  
   /*  Функциональность элемента редактировать профиль*/
-import {editProfile} from './utils.js';
-
+  import {editProfile} from './utils.js';
+  
   /*  Получение значения из блока popup_type_edit  */
-import {submitHandlerEdit} from './utils.js';
+  import {submitHandlerEdit} from './utils.js';
+  
+  /*  Закрытие попапа кликом на оверлей  */
+  import {closePopupByClickOverlay} from './utils.js';
+  
+  import { Card } from './Card.js';
+  import { FormValidator } from './FormValidator.js'
 
- /*  Закрытие попапа кликом на оверлей  */
- import {closePopupByClickOverlay} from './utils.js';
+
 
   /*  Навешивание обработчиков событий на элементов (элемент редактировать) */  
 formElementEdit.addEventListener('submit', submitHandlerEdit);
@@ -69,5 +73,10 @@ popupAll.forEach((element) => {
   (element.addEventListener('click', closePopupByClickOverlay));
 });
 
+const formValidatorAdd = new FormValidator(data, popupAdd);
+formValidatorAdd.enableValidation();
+
+const formValidatorEdit = new FormValidator(data, popupEdit);
+formValidatorEdit.enableValidation();
 
   
