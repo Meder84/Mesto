@@ -17,7 +17,7 @@ const hideError = (formSelector, inputSelector) => {
 
 // Функция checkInputValidity теперь принимает formSelector и inputSelector,
 // а не берёт их из внешней области видимости
-// Теперь функция isValid принимает сразу два параметра:
+// Теперь функция checkInputValidity принимает сразу два параметра:
 //  1.formSelector — html-элемент формы, в которой находится проверяемое поле ввода. 
 // Он нужен для поиска элемента ошибки в форме.
 //  2.inputSelector — проверяемое поле ввода.

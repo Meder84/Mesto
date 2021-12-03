@@ -39,3 +39,13 @@ export const popupCaptionPlace = popupPlace.querySelector('.popup__caption');
   export const cardDeleteButton = placeTemplate.querySelector('.card__delete-button');
   export const placeName = placeTemplate.querySelector('.card__title');
   export const cardLikeButton = placeTemplate.querySelector('.card__like-button')
+
+
+  export const formValid = {
+    formElement: '.popup__form',
+    inputElement: '.popup__input',
+    submitButton: '.popup__button',
+    buttonDesabled: 'popup__button_disabled',
+    inputError: 'error',
+    errorClassVisible: 'popup__error-visible'
+  }
