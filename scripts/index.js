@@ -1,13 +1,14 @@
   
       /*  elements  */
-  import {profile, popupOpenButtonEdit, popupOpenButtonAdd} from './consts.js';
+  import {popupOpenButtonEdit, popupOpenButtonAdd} from './consts.js';
   import {popupEdit, popupCloseButtonEdit} from './consts.js';
   import {popupAdd, popupCloseButtonAdd} from './consts.js';
   import {popupPlace, popupCloseButtonPlace} from './consts.js';
   import {list} from './consts.js';
-  
+  import { cardLikeButton } from './consts.js';
+
       /*  objects   */
-import { formValid } from './arr-elements.js';
+import { formValid } from './objects.js';
 
       /*  formElements  */
   import {formElementEdit} from './consts.js'; 
@@ -18,6 +19,9 @@ import { formValid } from './arr-elements.js';
   import {editProfile} from './utils.js';
   import {submitHandlerEdit} from './utils.js';
   import {closePopupByClickOverlay} from './utils.js';
+  import { handleClosePopup } from './utils.js';
+  import { renderingArray } from './utils.js';
+  renderingArray();
   
       /*  classes  */
   import { Card } from './Card.js';
@@ -36,6 +40,7 @@ formElementAdd.addEventListener('submit', () => {
       {
         name: nameInputAdd.value, 
         link: imageInputAdd.value,
+        cardLikeButton: cardLikeButton,
       },
       '.card-template'
     ); 
@@ -53,7 +58,11 @@ formElementEdit.addEventListener('submit', submitHandlerEdit);
 popupOpenButtonEdit.addEventListener('click', () => editProfile());
 popupCloseButtonEdit.addEventListener('click', () => closePopup(popupEdit));
 
-popupCloseButtonPlace.addEventListener('click', () => closePopup(popupPlace));
+popupCloseButtonPlace.addEventListener('click', () => {
+    closePopup(popupPlace);
+    handleClosePopup();
+  }
+);
 
 popupOpenButtonAdd.addEventListener('click', () => openPopup(popupAdd));
 popupCloseButtonAdd.addEventListener('click', () => closePopup(popupAdd));
@@ -65,5 +74,9 @@ popupAll.forEach((element) => {
 });
 
 
+
+    // popupCloseButtonPlace.addEventListener('click', () => {
+    //   this._handleClosePopup();
+    // });
 
   

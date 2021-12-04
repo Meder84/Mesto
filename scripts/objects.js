@@ -31,7 +31,7 @@ export const formValid = {
   formElement: '.popup__form',
   inputElement: '.popup__input',
   submitButton: '.popup__button', 
-  buttonDesabled: 'popup__button_desabled',
+  buttonDisabled: 'popup__button_disabled',
   inputError: '.error',
   errorClassVisible: 'popup__error-visible'
 }

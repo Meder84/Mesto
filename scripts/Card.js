@@ -1,18 +1,20 @@
       /*  arr   */
-import {initialCards} from './arr-elements.js';
+import {initialCards} from './objects.js';
 
       /*  const   */
-import {popupPlace, popupContainerPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
-import {list, placeTemplate, cardElement, cardDeleteButton, placeName, cardLikeButton} from './consts.js';
+import {popupPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
+import {list} from './consts.js';
 
       /*  functions   */
 import { closePopupEsc } from './utils.js';
+import { openPopup } from './utils.js';
 
 
 export class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._cardLikeButton = data.cardLikeButton;
     this._cardSelector = cardSelector;
   }
 
@@ -43,10 +45,6 @@ export class Card {
 
     this._element.querySelector('.card__image').addEventListener('click', () => {
       this._handleOpenPopup();
-    });
-
-    popupCloseButtonPlace.addEventListener('click', () => {
-      this._handleClosePopup();
     });   
     
     this._element.querySelector('.card__delete-button').addEventListener('click', () => {
@@ -59,29 +57,17 @@ export class Card {
   }
 
   _handleOpenPopup() {
-    document.addEventListener('keydown', closePopupEsc);
     popupImagePlace.src = this._link;
     popupImagePlace.alt = this._name;
     popupCaptionPlace.textContent = this._name;
-    popupPlace.classList.add('popup_opened');
-  }
-
-  _handleClosePopup() {
-    document.removeEventListener('keydown', closePopupEsc);
-    popupImagePlace.src = '';
-    popupImagePlace.alt = '';
-    popupCaptionPlace.textContent = '';
-    popupPlace.classList.remove('popup_opened');
+    openPopup(popupPlace);
   }
 
   _handleDelete() {
-    this._element.closest('.card').remove();
+    this._element.remove();
+    this._element = null;
   }
 }
 
-initialCards.forEach((item) => {
-  const card = new Card(item); 
-  const cardElement = card.generateCard();
-  list.append(cardElement);
-}); 
+
 

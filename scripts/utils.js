@@ -1,17 +1,26 @@
       /*  elements  */  
 import {profileName, profileJob} from './consts.js';
 import {popupEdit} from './consts.js';
+import { list } from './consts.js';
+import {popupPlace, popupImagePlace, popupCaptionPlace} from './consts.js'
 
       /*  formElements */
 import {nameInputEdit, jobInputEdit} from './consts.js';
 
-      /*  functions */
+      /*  objects  */
+import { initialCards } from './objects.js';
+
+      /*  classes  */
+import { Card } from './Card.js';
+
+
 export function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
     const closeCurrentPopup = document.querySelector('.popup_opened');
     closePopup(closeCurrentPopup);
   }
 }
+
 
 
 export function openPopup(popup) {
@@ -44,3 +53,18 @@ export function closePopupByClickOverlay (evt) {
   }
 }
   
+export function handleClosePopup() {
+    document.removeEventListener('keydown', closePopupEsc);
+    popupImagePlace.src = '';
+    popupImagePlace.alt = '';
+    popupCaptionPlace.textContent = '';
+    popupPlace.classList.remove('popup_opened');
+  }
+
+export function renderingArray () {
+   initialCards.forEach((item) => {
+    const card = new Card(item); 
+    const cardElement = card.generateCard();
+    list.append(cardElement);
+  }); 
+}
