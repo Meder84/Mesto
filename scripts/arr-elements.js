@@ -1,5 +1,4 @@
-    /*  Карточки  */
-const initialCards = [
+export const initialCards = [
   {
     name: 'Алтай',
     link: './images/element-altai.jpg'
@@ -25,3 +24,14 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
   }
 ]
+
+
+      /*  objects  */
+export const formValid = {
+  formElement: '.popup__form',
+  inputElement: '.popup__input',
+  submitButton: '.popup__button', 
+  buttonDesabled: 'popup__button_desabled',
+  inputError: '.error',
+  errorClassVisible: 'popup__error-visible'
+}
