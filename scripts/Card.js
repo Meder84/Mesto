@@ -1,12 +1,11 @@
+      /*  arr   */
 import {initialCards} from './arr-elements.js';
 
-  /*  Элементы popup_type_place   */
+      /*  const   */
 import {popupPlace, popupContainerPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
-
-/*  consts Элемента секции elements  */
 import {list, placeTemplate, cardElement, cardDeleteButton, placeName, cardLikeButton} from './consts.js';
 
-/*  Закрытие popup нажатием Esc   */
+      /*  functions   */
 import { closePopupEsc } from './utils.js';
 
 
@@ -18,27 +17,22 @@ export class Card {
   }
 
   _getTemplate() {
-    // забираем разметку из HTML и клонируем элемент
     const cardElement = document
     .querySelector('.card-template')
     .content
     .querySelector('.card')
     .cloneNode(true);
     
-    return cardElement; // вернём DOM-элемент карточки
+    return cardElement;
   }
 
   generateCard() {
-    // Запишем разметку в приватное поле _element. 
-    // Так у других элементов появится доступ к ней.
     this._element = this._getTemplate();
-    this._setEventListeners(); // добавим обработчики
+    this._setEventListeners(); 
   
-    // Добавим данные
     this._element.querySelector('.card__image').src = this._link;
     this._element.querySelector('.card__title').textContent = this._name;
   
-    // Вернём элемент наружу
     return this._element;
   } 
 
@@ -85,9 +79,8 @@ export class Card {
   }
 }
 
-// переберём весь исходный массив
 initialCards.forEach((item) => {
-  const card = new Card(item); // передаём объект аргументом
+  const card = new Card(item); 
   const cardElement = card.generateCard();
   list.append(cardElement);
 }); 

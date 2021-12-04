@@ -5,9 +5,9 @@ export class FormValidator {
     this._inputElement = formValid.inputElement;
     this._submitButton = formValid.submitButton;
     this._buttonDesabled = formValid.buttonDesabled;
-    this._inputError = formValid.inputError;
     this._errorClassVisible = formValid.errorClassVisible;
     this._targetFormValid = targetFormValid;
+    this._inputError = formValid.inputError;
   }
 
   _showError(formElement, inputElement, errorMessage) {
@@ -58,7 +58,7 @@ export class FormValidator {
   _setEventListeners(formElement){
     const inputList = Array.from(formElement.querySelectorAll(this._inputElement));
     const submitButton = formElement.querySelector(this._submitButton);
-    // submitButton.disabled = true;
+    submitButton.disabled = true;
 
     this._toggleButtonState(inputList, submitButton);
 
@@ -72,18 +72,7 @@ export class FormValidator {
     });
   } 
 
-  disableSubmitButton(formElement) {
-    const inputList = Array.from(formElement.querySelectorAll(this._inputElement));
-    const submitButton = formElement.querySelector(this._submitButton);
-
-    inputList.forEach((inputElement) => {
-        this._hideError(inputElement);
-    });
-
-    this._toggleButtonState(inputList, submitButton);
-};
   enableValidation() {
-    this.disableSubmitButton(this._targetFormValid)
     this._setEventListeners(this._targetFormValid);
 
     this._targetFormValid.addEventListener('submit', (evt) => {
