@@ -1,5 +1,5 @@
 .popup__input {
-  margin: 10px 0 5px;
+  margin: 0;
   width: 100%;
   padding: 0 0 7px 0;
   font-weight: 400;
@@ -12,15 +12,4 @@
   white-space: nowrap;
   overflow: hidden;
   outline: none;
-}
-
-.popup__input:first-of-type {
-  margin-top: 0;
-}
-
-@media screen and (max-width: 500px) {
-  .popup__input {
-    font-size: 14px;
-    line-height: 17px;
-  }
 }

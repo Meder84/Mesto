@@ -1,30 +1,27 @@
-      /*  arr   */
-import {initialCards} from './objects.js';
-
-      /*  const   */
-import {popupPlace, popupCloseButtonPlace, popupImagePlace, popupCaptionPlace} from './consts.js';
-import {list} from './consts.js';
+      /*  consts   */
+import {popupPlace,  popupImagePlace, popupCaptionPlace} from './consts.js';
 
       /*  functions   */
-import { closePopupEsc } from './utils.js';
-import { openPopup } from './utils.js';
+import { openPopup } from './functions.js';
 
 
 export class Card {
   constructor(data, cardSelector) {
     this._name = data.name;
     this._link = data.link;
-    this._cardLikeButton = data.cardLikeButton;
+
     this._cardSelector = cardSelector;
   }
-
+  
   _getTemplate() {
     const cardElement = document
     .querySelector('.card-template')
     .content
     .querySelector('.card')
     .cloneNode(true);
-    
+    this._cardLikeButton = cardElement.querySelector('.card__like-button');
+    this._cardImage = cardElement.querySelector('.card__image');
+
     return cardElement;
   }
 
@@ -32,18 +29,19 @@ export class Card {
     this._element = this._getTemplate();
     this._setEventListeners(); 
   
-    this._element.querySelector('.card__image').src = this._link;
+    this._cardImage.src = this._link;
+    this._cardImage.alt = this._name;
     this._element.querySelector('.card__title').textContent = this._name;
   
     return this._element;
   } 
 
   _setEventListeners() {
-    this._element.querySelector('.card__like-button').addEventListener('click', () => {
+    this._cardLikeButton.addEventListener('click', () => {
       this._handleButtonLikeClick();
     });
 
-    this._element.querySelector('.card__image').addEventListener('click', () => {
+    this._cardImage.addEventListener('click', () => {
       this._handleOpenPopup();
     });   
     
@@ -53,7 +51,7 @@ export class Card {
   }
 
   _handleButtonLikeClick() {
-    this._element.querySelector('.card__like-button').classList.toggle('card__like-button_black');
+    this._cardLikeButton.classList.toggle('card__like-button_black');
   }
 
   _handleOpenPopup() {

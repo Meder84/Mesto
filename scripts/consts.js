@@ -24,11 +24,11 @@
   export const cardLikeButton = placeTemplate.querySelector('.card__like-button')
 
       /*  formElements */
-  export const formElementEdit = popupEdit.querySelector('[name="popup-form-edit"]');
-  export const nameInputEdit = formElementEdit.querySelector('[name="name-input"]');
-  export const jobInputEdit = formElementEdit.querySelector('[name="job-input"]');
+  export const formElementEdit = popupEdit.querySelector('.popup__form');
+  export const nameInputEdit = formElementEdit.querySelector('.popup__input_name');
+  export const jobInputEdit = formElementEdit.querySelector('.popup__input_job');
   
-  export const formElementAdd = popupAdd.querySelector('[name="popup-form-add"]');
-  export const nameInputAdd = formElementAdd.querySelector('[name="description-input"]');
-  export const imageInputAdd = formElementAdd.querySelector('[name="url-input"]');
+  export const formElementAdd = popupAdd.querySelector('.popup__form');
+  export const nameInputAdd = formElementAdd.querySelector('.popup__input_description');
+  export const imageInputAdd = formElementAdd.querySelector('.popup__input_url');
   export const buttonSubmitAdd = formElementAdd.querySelector('.popup__button');

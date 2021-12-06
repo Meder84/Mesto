@@ -6,6 +6,7 @@ import {popupPlace, popupImagePlace, popupCaptionPlace} from './consts.js'
 
       /*  formElements */
 import {nameInputEdit, jobInputEdit} from './consts.js';
+import { formElementAdd } from './consts.js';
 
       /*  objects  */
 import { initialCards } from './objects.js';
@@ -18,10 +19,9 @@ export function closePopupEsc(evt) {
   if (evt.key === 'Escape') {
     const closeCurrentPopup = document.querySelector('.popup_opened');
     closePopup(closeCurrentPopup);
+    formElementAdd.reset();
   }
 }
-
-
 
 export function openPopup(popup) {
   document.addEventListener('keydown', closePopupEsc);
