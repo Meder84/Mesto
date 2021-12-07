@@ -7,6 +7,7 @@
 
       /*  objects   */
 import { formValid } from './objects.js';
+import { initialCards } from './objects.js';
 
       /*  formElements  */
   import {formElementEdit} from './consts.js'; 
@@ -18,11 +19,9 @@ import { formValid } from './objects.js';
   import {submitHandlerEdit} from './functions.js';
   import {closePopupByClickOverlay} from './functions.js';
   import { handleClosePopup } from './functions.js';
-  import { renderingArray } from './functions.js';
-  renderingArray();
+  import { creatCard } from './functions.js';
   
       /*  classes  */
-  import { Card } from './Card.js';
   import { FormValidator } from './FormValidator.js'
 
 
@@ -32,17 +31,15 @@ formValidatorAdd.enableValidation();
 const formValidatorEdit = new FormValidator(formValid, formElementEdit);
 formValidatorEdit.enableValidation();
 
+initialCards.forEach((item) => {
+  creatCard(item);
+}); 
 
 formElementAdd.addEventListener('submit', () => {
-    const card = new Card( 
-      {
-        name: nameInputAdd.value, 
-        link: imageInputAdd.value,
-      },
-      '.card-template'
-    ); 
-    const cardElement = card.generateCard();
-    list.prepend(cardElement);
+    creatCard({
+          name: nameInputAdd.value, 
+          link: imageInputAdd.value,
+        });
     closePopup(popupAdd);
     formElementAdd.reset();
     handleClosePopup();

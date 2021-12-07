@@ -8,9 +8,6 @@ import {popupPlace, popupImagePlace, popupCaptionPlace} from './consts.js'
 import {nameInputEdit, jobInputEdit} from './consts.js';
 import { formElementAdd } from './consts.js';
 
-      /*  objects  */
-import { initialCards } from './objects.js';
-
       /*  classes  */
 import { Card } from './Card.js';
 
@@ -54,17 +51,15 @@ export function closePopupByClickOverlay (evt) {
 }
   
 export function handleClosePopup() {
-    document.removeEventListener('keydown', closePopupEsc);
-    popupImagePlace.src = '';
-    popupImagePlace.alt = '';
-    popupCaptionPlace.textContent = '';
-    popupPlace.classList.remove('popup_opened');
-  }
+  document.removeEventListener('keydown', closePopupEsc);
+  popupImagePlace.src = '';
+  popupImagePlace.alt = '';
+  popupCaptionPlace.textContent = '';
+  popupPlace.classList.remove('popup_opened');
+}
 
-export function renderingArray () {
-   initialCards.forEach((item) => {
-    const card = new Card(item); 
-    const cardElement = card.generateCard();
-    list.append(cardElement);
-  }); 
+export function creatCard(elem) {
+  const card = new Card(elem); 
+  const cardElement = card.generateCard();
+  list.prepend(cardElement);
 }
