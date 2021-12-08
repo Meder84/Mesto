@@ -3,7 +3,6 @@
   import {popupEdit, popupCloseButtonEdit} from './consts.js';
   import {popupAdd, popupCloseButtonAdd} from './consts.js';
   import {popupPlace, popupCloseButtonPlace} from './consts.js';
-  import {list} from './consts.js';
 
       /*  objects   */
 import { formValid } from './objects.js';
