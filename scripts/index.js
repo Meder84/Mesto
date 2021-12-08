@@ -3,6 +3,7 @@
   import {popupEdit, popupCloseButtonEdit} from './consts.js';
   import {popupAdd, popupCloseButtonAdd} from './consts.js';
   import {popupPlace, popupCloseButtonPlace} from './consts.js';
+  import { list } from './consts.js';
 
       /*  objects   */
 import { formValid } from './objects.js';
@@ -18,7 +19,7 @@ import { initialCards } from './objects.js';
   import {submitHandlerEdit} from './functions.js';
   import {closePopupByClickOverlay} from './functions.js';
   import { handleClosePopup } from './functions.js';
-  import { creatCard } from './functions.js';
+  import { renderCard } from './functions.js'; 
   
       /*  classes  */
   import { FormValidator } from './FormValidator.js'
@@ -31,19 +32,21 @@ const formValidatorEdit = new FormValidator(formValid, formElementEdit);
 formValidatorEdit.enableValidation();
 
 initialCards.forEach((item) => {
-  creatCard(item);
+  renderCard(item, list);
 }); 
 
 formElementAdd.addEventListener('submit', () => {
-    creatCard({
-          name: nameInputAdd.value, 
-          link: imageInputAdd.value,
-        });
-    closePopup(popupAdd);
-    formElementAdd.reset();
-    handleClosePopup();
-  }
-);
+  renderCard(
+    {
+      name: nameInputAdd.value, 
+      link: imageInputAdd.value,
+    },
+    list
+  );
+  closePopup(popupAdd);
+  formElementAdd.reset();
+  handleClosePopup();
+});
 
       /*  Навешивание обработчиков событий */  
 formElementEdit.addEventListener('submit', submitHandlerEdit);

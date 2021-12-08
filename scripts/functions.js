@@ -1,7 +1,6 @@
       /*  elements  */  
-import {profileName, profileJob} from './consts.js';
+import {profileName, profileJob, list} from './consts.js';
 import {popupEdit} from './consts.js';
-import { list } from './consts.js';
 import {popupPlace, popupImagePlace, popupCaptionPlace} from './consts.js'
 
       /*  formElements */
@@ -58,8 +57,8 @@ export function handleClosePopup() {
   popupPlace.classList.remove('popup_opened');
 }
 
-export function creatCard(elem) {
+export function renderCard(elem, wrap) {
   const card = new Card(elem); 
   const cardElement = card.generateCard();
-  list.prepend(cardElement);
+  wrap.prepend(cardElement);
 }
