@@ -1,5 +1,5 @@
       /*  elements  */  
-import {profileName, profileJob, list} from './consts.js';
+import {profileName, profileJob} from './consts.js';
 import {popupEdit} from './consts.js';
 import {popupPlace, popupImagePlace, popupCaptionPlace} from './consts.js'
 
