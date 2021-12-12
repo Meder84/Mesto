@@ -25,7 +25,6 @@ export const initialCards = [
   }
 ]
 
-
       /*  objects  */
 export const formValid = {
   formElement: '.popup__form',

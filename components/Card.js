@@ -1,14 +1,15 @@
-      /*  consts   */
-import {popupPlace,  popupImagePlace, popupCaptionPlace} from './consts.js';
+      /*  constants   */
+import {popupPlace,  popupImagePlace, popupCaptionPlace} from '../utils/constants.js';
 
       /*  functions   */
-import { openPopup } from './functions.js';
+import { openPopup } from '../utils/utils.js';
 
 
 export class Card {
-  constructor(data, cardSelector) {
+  constructor({ data, handleCardClick }, cardSelector) {
     this._name = data.name;
     this._link = data.link;
+    this._handleCardClick = handleCardClick;
 
     this._cardSelector = cardSelector;
   }
