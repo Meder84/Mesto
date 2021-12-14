@@ -17,7 +17,7 @@
   export const popupCaptionPlace = popupPlace.querySelector('.popup__caption');
 
   export const cardListSection = document.querySelector('.cardListSection');
-  export const placeTemplate = document.querySelector('#card-template').content; 
+  export const placeTemplate = document.querySelector('.card-template').content; 
   export const cardElement = placeTemplate.querySelector('.card');
   export const cardDeleteButton = placeTemplate.querySelector('.card__delete-button');
   export const placeName = placeTemplate.querySelector('.card__title');

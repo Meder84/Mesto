@@ -6,7 +6,7 @@ import { openPopup } from '../utils/utils.js';
 
 
 export class Card {
-  constructor({ data, handleCardClick }, cardSelector) {
+  constructor(data, cardSelector, {handleCardClick}) {
     this._name = data.name;
     this._link = data.link;
     this._handleCardClick = handleCardClick;
@@ -43,7 +43,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      this._handleOpenPopup();
+      this._handleCardClick(this._element);
     });   
     
     this._element.querySelector('.card__delete-button').addEventListener('click', () => {

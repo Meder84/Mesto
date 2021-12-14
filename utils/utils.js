@@ -12,15 +12,15 @@ import { Card } from '../components/Card.js';
 
 
 
-// export function openPopup(popup) {
-//   document.addEventListener('keydown', closePopupEsc);
-//   popup.classList.add('popup_opened');
-// }
+export function openPopup(popup) {
+  document.addEventListener('keydown', closePopupEsc);
+  popup.classList.add('popup_opened');
+}
   
-// export function closePopup(popup) {
-//   document.removeEventListener('keydown', closePopupEsc);
-//   popup.classList.remove('popup_opened');
-// }
+export function closePopup(popup) {
+  document.removeEventListener('keydown', closePopupEsc);
+  popup.classList.remove('popup_opened');
+}
   
 export function editProfile() {
   nameInputEdit.value = profileName.textContent;

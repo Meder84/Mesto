@@ -20,18 +20,31 @@ export class Popup {
       }
   }
 
-  _closePopupByClickOverlay(evt) {
-    if (evt.target === evt.currentTarget) {
-      this.close(evt.target);
-    }
-  }
+  // _closePopupByClickOverlay(evt) {
+  //   if (evt.target === evt.currentTarget) {
+  //     this.close(evt.target);
+  //   }
+  // }
 
   setEventListeners() {
-    this._popup.querySelector('.popup__close-button')
-    .addEventListener('click', (evt) => this.close(evt));
+    this._popupSelector.addEventListener('click', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+        this.close(this._popupSelector)
+      }
+      if (evt.target.classList.contains('.popup__close-button')) {
+        this.close(this._popupSelector)
+      }
+    })  
 
-    this._popup.addEventListener(
-      'click', this._closePopupByClickOverlay(this)
-    )    
+    // this._popupSelector.querySelector('.popup__close-button')
+    // .addEventListener('click', (evt) => this.close(evt));
+
+    // this._popupSelector.addEventListener(
+    //   'click', (evt) => {
+    //     if (evt.target === evt.currentTarget) {
+    //       this.close(evt.target);
+    //     }
+    //   }
+    // )    
   }
 };

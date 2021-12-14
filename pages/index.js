@@ -3,8 +3,9 @@ import {
     popupOpenButtonEdit, popupOpenButtonAdd,
     popupEdit, popupCloseButtonEdit,
     popupAdd, popupCloseButtonAdd,
-    popupPlace, popupCloseButtonPlace,
-    cardListSection  
+    popupPlace, popupContainerPlace, popupCloseButtonPlace,
+    popupImagePlace, popupCaptionPlace,
+    cardListSection , placeTemplate
   } from '../utils/constants.js';
 
       /*  objects   */
@@ -16,19 +17,17 @@ import { formValid, initialCards } from '../utils/objects.js';
     formElementAdd, nameInputAdd, imageInputAdd  
   } from '../utils/constants.js';
   
-      /*  functions  */
-  import { 
-    openPopup, closePopup, editProfile,
-    submitHandlerEdit, closePopupByClickOverlay,
-    handleClosePopup
-  } from '../utils/utils.js';
-  
-  
       /*  classes  */
-  import { FormValidator } from '../components/FormValidator.js'
+import { FormValidator } from '../components/FormValidator.js'
 import { Section } from '../components/Section.js';
 import { Card } from '../components/Card.js';
+// import { Popup } from '../components/Popup.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+// import { PopupWithForm } from '../components/PopupWithForm.js';
+// import { UserInfo } from '../components/UserInfo.js';
 
+const popupWithImage = new PopupWithImage(popupPlace);
+popupWithImage.setEventListeners();
 
 const formValidatorAdd = new FormValidator(formValid, formElementAdd);
 formValidatorAdd.enableValidation();
@@ -36,15 +35,17 @@ formValidatorAdd.enableValidation();
 const formValidatorEdit = new FormValidator(formValid, formElementEdit);
 formValidatorEdit.enableValidation();
 
-// initialCards.forEach((item) => {
-//   renderCard(item, cardListSection);
-// }); 
-// export function renderCard(elem, wrap) {
-//   const card = new Card(elem); 
-//   const cardElement = card.generateCard();
-//   wrap.prepend(cardElement);
-// }
-
+const renderCard = (data) => {
+  const card = new Card(data, placeTemplate, {
+    handleCardClick: () => {
+      popupWithImage.open(
+        data.name,
+        data.link
+      );
+    }
+  });
+  return card.generateCard();
+}
 
 const cardList = new Section({
   items: initialCards,
@@ -61,6 +62,16 @@ cardListSection
 cardList.renderItems();
 
 
+
+
+    /*  functions  */
+  // import { 
+  //   openPopup, closePopup, editProfile,
+  //   submitHandlerEdit, closePopupByClickOverlay,
+  //   handleClosePopup
+  // } from '../utils/utils.js';
+  
+
 // formElementAdd.addEventListener('submit', () => {
 //   renderCard(
 //     {
@@ -75,32 +86,32 @@ cardList.renderItems();
 // });
 
       /*  Навешивание обработчиков событий */  
-formElementEdit.addEventListener('submit', submitHandlerEdit);
-popupOpenButtonEdit.addEventListener('click', () => {
-    editProfile();
-    formValidatorEdit.disableSubmitButton();
-  }
-);
-popupCloseButtonEdit.addEventListener('click', () => {
-    closePopup(popupEdit);
-  }
-);
+// formElementEdit.addEventListener('submit', submitHandlerEdit);
+// popupOpenButtonEdit.addEventListener('click', () => {
+//     editProfile();
+//     formValidatorEdit.disableSubmitButton();
+//   }
+// );
+// popupCloseButtonEdit.addEventListener('click', () => {
+//     closePopup(popupEdit);
+//   }
+// );
 
-popupCloseButtonPlace.addEventListener('click', () => {
-    closePopup(popupPlace);
-  }
-);
+// popupCloseButtonPlace.addEventListener('click', () => {
+//     closePopup(popupPlace);
+//   }
+// );
 
-popupOpenButtonAdd.addEventListener('click', () => {
-    openPopup(popupAdd);
-    formValidatorAdd.disableSubmitButton();
-  } 
-);
-popupCloseButtonAdd.addEventListener('click', () => {
-    closePopup(popupAdd);
-    formElementAdd.reset();
-  } 
-);
+// popupOpenButtonAdd.addEventListener('click', () => {
+//     openPopup(popupAdd);
+//     formValidatorAdd.disableSubmitButton();
+//   } 
+// );
+// popupCloseButtonAdd.addEventListener('click', () => {
+//     closePopup(popupAdd);
+//     formElementAdd.reset();
+//   } 
+// );
 
 
 
