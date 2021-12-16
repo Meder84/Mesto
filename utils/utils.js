@@ -8,7 +8,7 @@ import {nameInputEdit, jobInputEdit} from './constants.js';
 import { formElementAdd } from './constants.js';
 
       /*  classes  */
-import { Card } from '../components/Card.js';
+// import { Card } from '../components/Card.js';
 
 
 
