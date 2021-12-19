@@ -1,11 +1,11 @@
 import { Popup } from "./Popup.js";
 
 export class PopupWithForm extends Popup {
-  constructor({popupSelector, formSubmit}) {
+  constructor({popupSelector, handleFormSubmit}) {
     super(popupSelector);
-    this._formSubmit = formSubmit;
+    this._handleFormSubmit = handleFormSubmit;
 
-    this._formElement = this._popupSelector.querySelector('.popup__form');
+    this._formElement = this._popupSelector.querySelector('.popup__form');    
     this._inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
   }
 
@@ -24,11 +24,8 @@ _getInputValues() {
     super.setEventListeners()
 
     this._formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault(); // при сабмите формы отменим стандартное поведение
-      
-      // добавим вызов функции _formSubmit
-      // передадим ей объект — результат работы _getInputValues
-      this._formSubmit(this._getInputValues());
+      evt.preventDefault();
+      this._handleFormSubmit(this._getInputValues());
     });
   }
 

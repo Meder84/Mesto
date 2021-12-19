@@ -6,6 +6,8 @@
   export const profileJob = profile.querySelector('.profile__job');
   
   export const popupEdit = document.querySelector('.popup_type_edit');
+  export const inputNameEdit = popupEdit.querySelector('.popup__input_name');
+  export const inputJobEdit = popupEdit.querySelector('.popup__input_job');
   export const popupCloseButtonEdit = popupEdit.querySelector('.popup__close-button_edit');
   export const popupAdd = document.querySelector('.popup_type_add');
   export const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');

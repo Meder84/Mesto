@@ -1,7 +1,7 @@
 export class UserInfo {
   constructor(data) {
-    this._nameSelector = data.nameSelector;
-    this._jobSelector = data.jobSelector;
+    this._nameSelector = data.name;
+    this._jobSelector = data.job;
   }
 
   getUserInfo() {

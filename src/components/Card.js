@@ -1,10 +1,3 @@
-      /*  constants   */
-import {popupPlace,  popupImagePlace, popupCaptionPlace} from '../utils/constants.js';
-
-      /*  functions   */
-import { openPopup } from '../utils/utils.js';
-
-
 export class Card {
   constructor({data, handleCardClick}, cardSelector ) {
     this._name = data.name;
@@ -53,13 +46,6 @@ export class Card {
 
   _handleButtonLikeClick() {
     this._cardLikeButton.classList.toggle('card__like-button_black');
-  }
-
-  _handleOpenPopup() {
-    popupImagePlace.src = this._link;
-    popupImagePlace.alt = this._name;
-    popupCaptionPlace.textContent = this._name;
-    openPopup(popupPlace);
   }
 
   _handleDelete() {
