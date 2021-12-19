@@ -6,6 +6,8 @@
   export const profileJob = profile.querySelector('.profile__job');
   
   export const popupEdit = document.querySelector('.popup_type_edit');
+  export const inputNameEdit = popupEdit.querySelector('.popup__input_name');
+  export const inputJobEdit = popupEdit.querySelector('.popup__input_job');
   export const popupCloseButtonEdit = popupEdit.querySelector('.popup__close-button_edit');
   export const popupAdd = document.querySelector('.popup_type_add');
   export const popupCloseButtonAdd = popupAdd.querySelector('.popup__close-button_add');
@@ -16,8 +18,8 @@
   export const popupImagePlace = popupPlace.querySelector('.popup__image');
   export const popupCaptionPlace = popupPlace.querySelector('.popup__caption');
 
-  export const list = document.querySelector('.list');
-  export const placeTemplate = document.querySelector('#card-template').content; 
+  export const cardListSection = document.querySelector('.cardListSection');
+  export const placeTemplate = document.querySelector('.card-template').content; 
   export const cardElement = placeTemplate.querySelector('.card');
   export const cardDeleteButton = placeTemplate.querySelector('.card__delete-button');
   export const placeName = placeTemplate.querySelector('.card__title');

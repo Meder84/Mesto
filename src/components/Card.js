@@ -1,15 +1,9 @@
-      /*  consts   */
-import {popupPlace,  popupImagePlace, popupCaptionPlace} from './consts.js';
-
-      /*  functions   */
-import { openPopup } from './functions.js';
-
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor({data, handleCardClick}, cardSelector ) {
     this._name = data.name;
     this._link = data.link;
-
+    this._handleCardClick = handleCardClick;
+    
     this._cardSelector = cardSelector;
   }
   
@@ -42,7 +36,7 @@ export class Card {
     });
 
     this._cardImage.addEventListener('click', () => {
-      this._handleOpenPopup();
+      this._handleCardClick(this._element);
     });   
     
     this._element.querySelector('.card__delete-button').addEventListener('click', () => {
@@ -52,13 +46,6 @@ export class Card {
 
   _handleButtonLikeClick() {
     this._cardLikeButton.classList.toggle('card__like-button_black');
-  }
-
-  _handleOpenPopup() {
-    popupImagePlace.src = this._link;
-    popupImagePlace.alt = this._name;
-    popupCaptionPlace.textContent = this._name;
-    openPopup(popupPlace);
   }
 
   _handleDelete() {

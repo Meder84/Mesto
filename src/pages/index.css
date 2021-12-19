@@ -34,8 +34,8 @@
 @import url(../blocks/content/__elements/content__elements.css);
 
 
-    /*  block list   */
-@import url(../blocks/list/list.css);
+    /*  block cardListSection   */
+@import url(../blocks/cardListSection/cardListSection.css);
 
     /*  block card   */
 @import url(../blocks/card/__title/card__title.css);
