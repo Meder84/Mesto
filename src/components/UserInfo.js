@@ -1,19 +1,19 @@
 export class UserInfo {
   constructor(data) {
-    this._nameSelector = data.name;
-    this._jobSelector = data.job;
-  }
+    this._profileName = document.querySelector(data.name);
+    this._profileJob = document.querySelector(data.job);
+  } 
 
   getUserInfo() {
     const userInfo = {
-      name: this._nameSelector.textContent,
-      job: this._jobSelector.textContent
+      name: this._profileName.textContent,
+      job: this._profileJob.textContent
     }
     return userInfo;
   }
 
   setUserInfo(evt) {
-    this._nameSelector.textContent = evt.name;
-    this._jobSelector.textContent = evt.job;
+    this._profileName.textContent = evt.name;
+    this._profileJob.textContent = evt.job;
   }
 }
