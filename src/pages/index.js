@@ -5,7 +5,6 @@ import {
   inputNameEdit, inputJobEdit,popupOpenButtonAdd,
   cardListSection
 } from '../utils/constants.js';
-console.log('hello')
 
       /*  objects   */
 import { formValid, initialCards } from '../utils/objects.js';
@@ -23,6 +22,7 @@ import { Card } from '../components/Card.js';
 import { PopupWithImage } from '../components/PopupWithImage.js'; 
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
+import { Api } from '../components/Api.js';
 
 
 const formValidatorAdd = new FormValidator(formValid, formElementAdd);
@@ -39,6 +39,28 @@ const userInfo = new UserInfo ({
   job: '.profile__job'
 })
 
+
+const api = new Api({
+  url: 'https://mesto.nomoreparties.co/v1/cohort-33/cards',
+  headers: {
+    Authorization: '04054c0a-e5f0-43e0-9b89-7862898c59bd',
+    'content-type': 'application/json'
+  }
+})
+
+const cards = api.getAllCards();
+cards.then((data) => {
+  const cardList = new Section({
+    data: data,
+    renderer: (data) => {
+      cardList.addItem(renderCard(data));
+    }
+  }, cardListSection );
+  
+  cardList.renderItems();
+}).catch((err) => alert(err));
+
+
 function renderCard(data) {
   const card = new Card ({
     data: data,
@@ -52,20 +74,20 @@ function renderCard(data) {
   return cardElement;
 }
 
-const cardList = new Section({
-  data: initialCards,
-  renderer: (data) => {
-    cardList.addItem(renderCard(data));
-  }
-}, cardListSection );
+// const cardList = new Section({
+//   data: initialCards,
+//   renderer: (data) => {
+//     cardList.addItem(renderCard(data));
+//   }
+// }, cardListSection );
 
-cardList.renderItems();
+// cardList.renderItems();
 
 
 const addFormValue = new PopupWithForm({
   popupElement: '.popup_type_add',
   handleFormSubmit: (data) => {
-    cardList.addItem(renderCard(data))
+    // cards.addCard(renderCard(data))
     addFormValue.close();
   }
 });
