@@ -39,26 +39,33 @@ const userInfo = new UserInfo ({
   job: '.profile__job'
 })
 
-
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-33/cards',
+  url: 'https://mesto.nomoreparties.co/v1/cohort-33/users/me',
   headers: {
-    Authorization: '04054c0a-e5f0-43e0-9b89-7862898c59bd',
-    'content-type': 'application/json'
+    Authentication: '04054c0a-e5f0-43e0-9b89-7862898c59bd',
+    'Content-Type': 'application/json;charset=utf-8',
   }
 })
 
-const cards = api.getAllCards();
-cards.then((data) => {
-  const cardList = new Section({
-    data: data,
-    renderer: (data) => {
-      cardList.addItem(renderCard(data));
-    }
-  }, cardListSection );
-  
-  cardList.renderItems();
-}).catch((err) => alert(err));
+// const api = new Api({
+//   url: "https://api-test.pa7lux.ru/streams/",
+//   headers: {
+// 		//Authorisation: 'fdsfdfsfdsa',
+//     "content-type": "application/json",
+//   },
+// });
+
+api.getUser();
+// .then((data) => {
+//     console.log(data)
+//   })
+
+// const userApi = api.getUser();
+// userApi.then((data) => {
+//   console.log(data)
+// })
+// .catch((err) => alert(err));
+// debugger;
 
 
 function renderCard(data) {
@@ -74,20 +81,20 @@ function renderCard(data) {
   return cardElement;
 }
 
-// const cardList = new Section({
-//   data: initialCards,
-//   renderer: (data) => {
-//     cardList.addItem(renderCard(data));
-//   }
-// }, cardListSection );
+const cardList = new Section({
+  data: initialCards,
+  renderer: (data) => {
+    cardList.addItem(renderCard(data));
+  }
+}, cardListSection );
 
-// cardList.renderItems();
+cardList.renderItems();
 
 
 const addFormValue = new PopupWithForm({
   popupElement: '.popup_type_add',
   handleFormSubmit: (data) => {
-    // cards.addCard(renderCard(data))
+    cardList.addItem(renderCard(data))
     addFormValue.close();
   }
 });
