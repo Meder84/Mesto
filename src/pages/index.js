@@ -23,6 +23,7 @@ import { PopupWithImage } from '../components/PopupWithImage.js';
 import { PopupWithForm } from '../components/PopupWithForm.js';
 import { UserInfo } from '../components/UserInfo.js';
 import { Api } from '../components/Api.js';
+import { PopupDeleteCard } from '../components/PopupDeleteCard.js';
 
 
 const formValidatorAdd = new FormValidator(formValid, formElementAdd);
@@ -33,6 +34,22 @@ formValidatorEdit.enableValidation();
 
 const popupWithImage = new PopupWithImage('.popup_type_place');
 popupWithImage.setEventListeners();
+
+const popupDeleteCard = new PopupDeleteCard('.popup_type_delete');
+popupDeleteCard.setEventListeners();
+
+
+// function handleCardDelete(card) {
+//   popupDeleteCard.handlerSubmit(() => {
+//     api.deleteCard(card._id).then(() => {
+//       card.handleDelete();
+
+//       popupDeleteCard.close();
+//     })
+//   })
+  
+//   popupDeleteCard.open();
+// }
 
 const userInfo = new UserInfo ({
   name: '.profile__name',
@@ -47,6 +64,7 @@ const api = new Api({
     'Content-Type': 'application/json;charset=utf-8',
   }
 })
+
 
 let cardList = '';
 
@@ -81,7 +99,16 @@ function renderCard(data) {
     },
 
     handleDeleteIconClick: () => {
-      
+
+      // handleCardDelete(card);
+      popupDeleteCard.handlerSubmit(() => {
+        api.deleteCard(data._id).then((data) => {
+          card.handleDelete(data);
+          
+          popupDeleteCard.close();
+        })
+      })
+      popupDeleteCard.open();
     }
   }, '.card-template')
 

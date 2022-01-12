@@ -17,6 +17,7 @@ export class Api {
     })
     .then(this._errorHandler);
   }
+
   setUser(data) {
     return fetch( this._url + 'users/me', {
       method: 'PATCH',
@@ -28,6 +29,7 @@ export class Api {
     })
     .then(this._errorHandler)
   }
+
   getCards() {
     return fetch( this._url + 'cards', {
       headers: this._headers,
@@ -50,9 +52,9 @@ export class Api {
   deleteCard(id) {
     return fetch( this._url + 'cards/' + id, {
       method: 'DELETE',
-      headers: this.headers,
+      headers: this._headers
     })
-    .then(this._getResponseData)
+    .then(this._errorHandler);
   }
 
   setLikeHandler(id) {
