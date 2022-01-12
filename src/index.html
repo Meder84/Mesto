@@ -21,10 +21,15 @@
 
       <main class="content">
         <section class="profile">
+          <button 
+            class="profile__avatar-button"
+            type="button">              
+          </button>
           <img 
             class="profile__avatar" 
             src="#" 
             alt="аватар.">
+          
           <div class="profile__info">
             <h1 class="profile__name"></h1>
             <button 
@@ -71,28 +76,28 @@
               maxlength="40"
               autocomplete="off" 
               placeholder="Имя">
-              <span 
-                class="error" 
-                id="name-input-error">
-              </span>
+            <span 
+              class="error" 
+              id="name-input-error">
+            </span>
             <input
               class="popup__input popup__input_job" 
               type="text" 
               id="job-input"
-              name="job" 
+              name="about" 
               required
               minlength="2"
               maxlength="200"
               autocomplete="off" 
               placeholder="Профессия">
-              <span 
-                class="error" 
-                id="job-input-error">
-              </span>
+            <span 
+              class="error" 
+              id="job-input-error">
+            </span>
             <button 
               class="popup__button" 
               type="submit">
-              Сохранить
+                Сохранить
             </button>
           </form>
         </div>
@@ -120,10 +125,10 @@
               maxlength="30"
               autocomplete="off" 
               placeholder="Название">
-              <span 
-                class="error" 
-                id="description-input-error">
-              </span>
+            <span 
+              class="error" 
+              id="description-input-error">
+            </span>
             <input
               class="popup__input popup__input_url" 
               type="url" 
@@ -132,14 +137,14 @@
               required
               autocomplete="off" 
               placeholder="Ссылка на картинку">
-              <span 
-                class="error" 
-                id="url-input-error">
-              </span>
+            <span 
+              class="error" 
+              id="url-input-error">
+            </span>
             <button 
               class="popup__button" 
               type="submit">
-              Создать
+                Создать
             </button>
           </form>
         </div>
@@ -171,6 +176,39 @@
             class="popup__button" 
             type="submit">Да
           </button>
+        </div>
+      </div>
+
+      <div class="popup popup_type_avatar">
+        <div class="popup__container">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <button 
+            class="popup__close-button popup__close-button_avatar opacity" 
+            type="button">
+          </button>
+          <form 
+            class="popup__form" 
+            name="popup-form-avatar" 
+            action="#"
+            novalidate>
+            <input
+              class="popup__input popup__input_url" 
+              type="url" 
+              name="link"
+              id="url-input" 
+              required
+              autocomplete="off" 
+              placeholder="Ссылка на картинку">
+            <span 
+              class="error" 
+              id="url-input-error">
+            </span>
+            <button 
+              class="popup__button" 
+              type="submit">
+                Сохранить
+            </button>
+          </form>
         </div>
       </div>
 

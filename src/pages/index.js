@@ -7,7 +7,7 @@ import {
 } from '../utils/constants.js';
 
       /*  objects   */
-import { formValid, initialCards } from '../utils/objects.js';
+import { formValid } from '../utils/objects.js';
 
       /*  formElements  */
   import { 
@@ -36,66 +36,84 @@ popupWithImage.setEventListeners();
 
 const userInfo = new UserInfo ({
   name: '.profile__name',
-  job: '.profile__job'
+  about: '.profile__job',
+  avatar: '.profile__avatar'
 })
 
 const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-33/users/me',
+  url: 'https://mesto.nomoreparties.co/v1/cohort-33/',
   headers: {
-    Authentication: '04054c0a-e5f0-43e0-9b89-7862898c59bd',
+    authorization: '04054c0a-e5f0-43e0-9b89-7862898c59bd',
     'Content-Type': 'application/json;charset=utf-8',
   }
 })
 
-// const api = new Api({
-//   url: "https://api-test.pa7lux.ru/streams/",
-//   headers: {
-// 		//Authorisation: 'fdsfdfsfdsa',
-//     "content-type": "application/json",
-//   },
-// });
+let cardList = '';
 
-api.getUser();
-// .then((data) => {
-//     console.log(data)
-//   })
-
-// const userApi = api.getUser();
-// userApi.then((data) => {
-//   console.log(data)
-// })
-// .catch((err) => alert(err));
-// debugger;
-
+function cardListHandler (item) {
+  cardList = new Section({
+    data: item,
+    renderer: (item) => {
+      cardList.addItem(renderCard(item));
+    }
+  }, cardListSection );
+}
 
 function renderCard(data) {
   const card = new Card ({
     data: data,
-    handleCardClick: () => {
-      popupWithImage.open(data);
+    handleCardClick: (card) => {
+      // popupWithImage.open(data);
+    },
+
+    handleLikeClick: () => {
+
+      if(card.currentLike()) {
+        api.deleteLikeHandler(data._id).then((data) => {
+          card.handleButtonLikeClick(data);
+        })
+      } else {
+        api.setLikeHandler(data._id).then((data) => {
+          card.handleButtonLikeClick(data);
+        })
+        .catch((err) => alert(err));
+      }
+    },
+
+    handleDeleteIconClick: () => {
+      
     }
-  }, cardListSection )
+  }, '.card-template')
 
   const cardElement = card.generateCard();
-
   return cardElement;
 }
 
-const cardList = new Section({
-  data: initialCards,
-  renderer: (data) => {
-    cardList.addItem(renderCard(data));
-  }
-}, cardListSection );
+const userApi = api.getUser()
+.then((data) => {  
+  userInfo.setUserInfo(data);
+})
+.catch((err) => alert(err));
 
-cardList.renderItems();
+
+const cardsApi = api.getCards()
+.then((data) => {
+  cardListHandler(data);
+  cardList.renderItems(data);
+})
+.catch((err) => alert(err));
 
 
 const addFormValue = new PopupWithForm({
   popupElement: '.popup_type_add',
   handleFormSubmit: (data) => {
-    cardList.addItem(renderCard(data))
-    addFormValue.close();
+    api.addNewCard(data)
+      .then((data) => {        
+        cardListHandler(data);
+        addFormValue.close();
+      })
+      .catch((err) => alert(err));  
+
   }
 });
 addFormValue.setEventListeners();
@@ -107,10 +125,17 @@ popupOpenButtonAdd.addEventListener('click', () => {
   } 
 );
 
+
 const editFormValue = new PopupWithForm({
   popupElement: '.popup_type_edit',
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data);
+    api.setUser(data)
+      .then((data) => {
+        userInfo.setUserInfo(data);
+        editFormValue.close();
+      })
+      .catch((err) => alert(err));  
+
     editFormValue.close();
   }
 });
@@ -122,7 +147,7 @@ popupOpenButtonEdit.addEventListener('click', () => {
     const userInfoGet = userInfo.getUserInfo();
 
     inputNameEdit.value = userInfoGet.name; 
-    inputJobEdit.value = userInfoGet.job;
+    inputJobEdit.value = userInfoGet.about;
     formValidatorEdit.resetValidation();
   }
 );
