@@ -12,7 +12,8 @@ import { formValid } from '../utils/objects.js';
       /*  formElements  */
   import { 
     formElementEdit,
-    formElementAdd, 
+    formElementAdd,
+    formElementAvatar, 
   } from '../utils/constants.js';
   
       /*  classes  */
@@ -32,24 +33,15 @@ formValidatorAdd.enableValidation();
 const formValidatorEdit = new FormValidator(formValid, formElementEdit);
 formValidatorEdit.enableValidation();
 
+const formValidatorAvatar = new FormValidator(formValid, formElementAvatar);
+formValidatorAvatar.enableValidation();
+
 const popupWithImage = new PopupWithImage('.popup_type_place');
 popupWithImage.setEventListeners();
 
 const popupDeleteCard = new PopupDeleteCard('.popup_type_delete');
 popupDeleteCard.setEventListeners();
 
-
-// function handleCardDelete(card) {
-//   popupDeleteCard.handlerSubmit(() => {
-//     api.deleteCard(card._id).then(() => {
-//       card.handleDelete();
-
-//       popupDeleteCard.close();
-//     })
-//   })
-  
-//   popupDeleteCard.open();
-// }
 
 const userInfo = new UserInfo ({
   name: '.profile__name',
@@ -99,32 +91,32 @@ function renderCard(data) {
     },
 
     handleDeleteIconClick: () => {
-
-      // handleCardDelete(card);
       popupDeleteCard.handlerSubmit(() => {
         api.deleteCard(data._id).then((data) => {
           card.handleDelete(data);
           
           popupDeleteCard.close();
         })
+        .catch((err) => alert(err));
       })
       popupDeleteCard.open();
-    }
+    }, cardId
   }, '.card-template')
 
   const cardElement = card.generateCard();
   return cardElement;
 }
 
-const userApi = api.getUser()
-.then((data) => {  
+let cardId = '';
+
+const userApi = api.getUser().then((data) => {  
   userInfo.setUserInfo(data);
+  cardId = data._id;
 })
 .catch((err) => alert(err));
 
 
-const cardsApi = api.getCards()
-.then((data) => {
+const cardsApi = api.getCards().then((data) => {
   cardListHandler(data);
   cardList.renderItems(data);
 })
@@ -178,6 +170,21 @@ popupOpenButtonEdit.addEventListener('click', () => {
     formValidatorEdit.resetValidation();
   }
 );
+
+const popupTypeAvatar = new PopupWithForm ({
+  popupElement: '.popup_type_avatar',
+  handleFormSubmit: (data) => {
+    api.userAvatarUpdate(data).then((data) => {
+      userInfo.setUserInfo(data);
+
+      popupTypeAvatar.close();
+    })
+  }
+})
+
+popupTypeAvatar.setEventListeners()
+
+
 
 
 

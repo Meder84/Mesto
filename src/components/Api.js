@@ -72,4 +72,14 @@ export class Api {
     })
     .then(this._errorHandler);
   }
+
+  userAvatarUpdate(data) {
+    return fetch( this._url + 'users/me/avatar', {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: data.avatar
+      })
+    })
+  }
 }
