@@ -1,6 +1,6 @@
 export class Api {
   constructor(config) {
-    this._url = config.url;
+    this._url = config.baseUrl;
     this._headers = config.headers;
 }
 
@@ -73,6 +73,7 @@ export class Api {
     .then(this._errorHandler);
   }
 
+ 
   userAvatarUpdate(data) {
     return fetch( this._url + 'users/me/avatar', {
       method: 'PATCH',
@@ -81,5 +82,6 @@ export class Api {
         avatar: data.avatar
       })
     })
+    .then(this._errorHandler)
   }
 }
