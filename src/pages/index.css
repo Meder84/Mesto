@@ -66,11 +66,11 @@
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__error-visible/popup__error-visible.css);
 @import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
+@import url(../blocks/popup/__title_type_delete/popup__title_type_delete.css);
 
     /*  block error   */
 @import url(../blocks/error/error.css);
 
 /*  block content  */
 @import url(../blocks/content/content.css);
-@import url(../blocks/content/__popup__title/content__popup__title.css);
     
