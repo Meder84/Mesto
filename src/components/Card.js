@@ -1,5 +1,7 @@
 export class Card {
-  constructor({data, handleCardClick, handleLikeClick, handleDeleteIconClick, cardId}, cardSelector ) {
+  constructor(
+    {data, handleCardClick, handleLikeClick, handleDeleteIconClick, cardId}, 
+    cardSelector ) {
     this._likes = data.likes;
     this._id = data._id;
     this._ownerId = data.owner._id;
@@ -23,6 +25,7 @@ export class Card {
     this._cardLikeButton = cardElement.querySelector('.card__like-button');
     this._cardImage = cardElement.querySelector('.card__image');
     this._cardDeleteButton = cardElement.querySelector('.card__delete-button');
+    this._cardLikeCounter = cardElement.querySelector('.card__like-counter');
 
     return cardElement;
   }
@@ -34,7 +37,7 @@ export class Card {
     this._cardImage.src = this._link;
     this._cardImage.alt = this._name;
     this._element.querySelector('.card__title').textContent = this._name;
-    this._element.querySelector('.card__like-counter').textContent = this._likes.length;
+    this._cardLikeCounter.textContent = this._likes.length;
 
     if( this._ownerId !== this._cardId ) {
       this._cardDeleteButton.style.display = 'none'
@@ -46,7 +49,6 @@ export class Card {
   _setEventListeners() {
     this._cardLikeButton.addEventListener('click', () => {
       this._handleLikeClick();
-      this.handleButtonLikeClick();
     });
 
     this._cardImage.addEventListener('click', () => {
@@ -65,9 +67,18 @@ export class Card {
   handleButtonLikeClick(data) {
     this._currentLike = data.likes.filter((elem) => { 
       return elem._id === this._cardId
-    }) 
+    })
 
-    this._cardLikeButton.classList.toggle('card__like-button_black');
+    if (this._cardLikeButton.classList.contains('card__like-button_black')) {
+
+      this._cardLikeButton.classList.remove('card__like-button_black');
+      this._cardLikeCounter.textContent = Number(this._cardLikeCounter.textContent) - 1;
+
+    } else {
+
+      this._cardLikeButton.classList.add('card__like-button_black')
+      this._cardLikeCounter.textContent = Number(this._cardLikeCounter.textContent) + 1;
+    }
   }
 
   handleDelete() {

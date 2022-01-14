@@ -8,6 +8,7 @@ export class PopupWithForm extends Popup {
     this._formElement = this._popupElement.querySelector('.popup__form');    
     this._inputList = Array.from(this._formElement.querySelectorAll('.popup__input'));
     this._popupButton = this._popupElement.querySelector('.popup__button');
+    this._popupButtonInitialValue = this._popupButton.textContent;
   }
 
 
@@ -25,7 +26,7 @@ export class PopupWithForm extends Popup {
     if(loading) {
       this._popupButton.textContent = 'Сохранение...';
     } else {
-      this._popupButton.textContent;
+      this._popupButton.textContent = this._popupButtonInitialValue;
     }
   }
 

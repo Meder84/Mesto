@@ -83,6 +83,8 @@ function renderCard(data) {
         api.deleteLikeHandler(data._id).then((data) => {
           card.handleButtonLikeClick(data);
         })
+        .catch((err) => alert(err));
+
       } else {
         api.setLikeHandler(data._id).then((data) => {
           card.handleButtonLikeClick(data);
@@ -110,18 +112,16 @@ function renderCard(data) {
 }
 
 
-const userApi = api.getUser().then((data) => {  
-  userInfo.setUserInfo(data);
-  cardId = data._id;
-})
-.catch((err) => alert(err));
+Promise.all([api.getUser(), api.getCards()])
+  .then(([userData, cards]) => {
 
+    userInfo.setUserInfo(userData);
+    cardId = userData._id;
 
-const cardsApi = api.getCards().then((data) => {
-  cardListHandler(data);
-  cardList.renderItems(data);
-})
-.catch((err) => alert(err));
+    cardListHandler(cards);
+    cardList.renderItems(cards);
+  })
+  .catch((err) => alert(err));
 
 
 const addFormValue = new PopupWithForm({
@@ -129,8 +129,8 @@ const addFormValue = new PopupWithForm({
   handleFormSubmit: (data) => {
     addFormValue.loadingHandler(true)
 
-    api.addNewCard(data).then((data) => {        
-        cardListHandler(data);
+    api.addNewCard(data).then((data) => { 
+        cardList.addItem(data)
         addFormValue.close();
       })
       .catch((err) => alert(err))
