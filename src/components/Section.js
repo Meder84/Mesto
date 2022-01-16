@@ -5,12 +5,12 @@ export class Section {
   }
   
   renderItems(items) {
-    items.forEach(item => {
+    items.reverse().forEach(item => {
       this._renderer(item); 
     });
   }
 
   addItem(elem) {
-    this._container.append(elem);
+    this._container.prepend(elem);
   }
 }
