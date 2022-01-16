@@ -58,10 +58,8 @@ const api = new Api({
 })
 
 const cardList = new Section({
-  renderer: (item) => {
-    const card = renderCard(item);
-    const cardElement = card.generateCard()
-    cardList.addItem(cardElement);
+  renderer: (item) => {    
+    cardList.addItem(renderCard(item));
   }
 }, '.card-list-section');
 
@@ -93,7 +91,8 @@ function renderCard(data) {
     
   }, '.card-template', userDataId, api)
 
-  return card;
+  const cardElement = card.generateCard()
+  return cardElement;
 }
 
 
@@ -115,9 +114,7 @@ const addFormValue = new PopupWithForm({
 
     api.addNewCard(data).then((data) => { 
 
-      const card = renderCard(data);
-      const cardElement = card.generateCard()
-      cardList.addItem(cardElement);
+      cardList.addItem(renderCard(data));
 
         addFormValue.close();
       })
