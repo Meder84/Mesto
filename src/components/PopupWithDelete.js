@@ -7,14 +7,14 @@ export class PopupWithDelete extends Popup {
   }
 
   handlerSubmit(data) {
-    this.handlerSubmit = data;
+    this._handlerSubmit = data;
   }
 
   setEventListeners() {
     super.setEventListeners();
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      this.handlerSubmit();
+      this._handlerSubmit();
     });
   }
 }

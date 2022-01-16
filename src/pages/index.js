@@ -3,7 +3,7 @@ import './index.css'
 import { 
   popupOpenButtonEdit, 
   inputNameEdit, inputJobEdit,popupOpenButtonAdd,
-  cardListSection, popupOpenButtonAvatar
+  popupOpenButtonAvatar
 } from '../utils/constants.js';
 
       /*  objects   */
@@ -57,18 +57,14 @@ const api = new Api({
   }
 })
 
+const cardList = new Section({
+  renderer: (item) => {
+    cardList.addItem(renderCard(item));
+  }
+}, '.card-list-section');
 
-let cardList = '';
-let cardId = '';
+let userDataId = '';
 
-function cardListHandler (item) {
-  cardList = new Section({
-    data: item,
-    renderer: (item) => {
-      cardList.addItem(renderCard(item));
-    }
-  }, cardListSection );
-}
 
 function renderCard(data) {
   const card = new Card ({
@@ -78,17 +74,7 @@ function renderCard(data) {
     },
 
     handleLikeClick: () => {
-
-      if(card.currentLike()) {
-        api.deleteLikeHandler(data._id).then((data) => {
-          card.handleButtonLikeClick(data);
-        })
-      } else {
-        api.setLikeHandler(data._id).then((data) => {
-          card.handleButtonLikeClick(data);
-        })
-        .catch((err) => alert(err));
-      }
+      card.handleButtonLikeClick()
     },
 
     handleDeleteIconClick: () => {
@@ -101,27 +87,24 @@ function renderCard(data) {
         .catch((err) => alert(err));
       })
       popupWithDelete.open();
-    }, cardId
+    }
     
-  }, '.card-template')
+  }, '.card-template', userDataId, api)
 
   const cardElement = card.generateCard();
   return cardElement;
 }
 
 
-const userApi = api.getUser().then((data) => {  
-  userInfo.setUserInfo(data);
-  cardId = data._id;
-})
-.catch((err) => alert(err));
+Promise.all([api.getUser(), api.getCards()])
+  .then(([userData, cards]) => {
 
+    userInfo.setUserInfo(userData);
+    userDataId = userData._id;
 
-const cardsApi = api.getCards().then((data) => {
-  cardListHandler(data);
-  cardList.renderItems(data);
-})
-.catch((err) => alert(err));
+    cardList.renderItems(cards);
+  })
+  .catch((err) => alert(err));
 
 
 const addFormValue = new PopupWithForm({
@@ -129,15 +112,14 @@ const addFormValue = new PopupWithForm({
   handleFormSubmit: (data) => {
     addFormValue.loadingHandler(true)
 
-    api.addNewCard(data).then((data) => {        
-        cardListHandler(data);
+    api.addNewCard(data).then((data) => { 
+      cardList.addItem(data)
         addFormValue.close();
       })
       .catch((err) => alert(err))
       .finally(() => {
         addFormValue.loadingHandler(false)
       }) 
-
   }
 });
 addFormValue.setEventListeners();
