@@ -3,7 +3,7 @@ import './index.css'
 import { 
   popupOpenButtonEdit, 
   inputNameEdit, inputJobEdit,popupOpenButtonAdd,
-  cardListSection, popupOpenButtonAvatar
+  popupOpenButtonAvatar
 } from '../utils/constants.js';
 
       /*  objects   */
@@ -57,18 +57,14 @@ const api = new Api({
   }
 })
 
+const cardList = new Section({
+  renderer: (item) => {
+    cardList.addItem(renderCard(item));
+  }
+}, '.card-list-section');
 
-let cardList = '';
-let cardId = '';
+let userDataId = '';
 
-function cardListHandler (item) {
-  cardList = new Section({
-    data: item,
-    renderer: (item) => {
-      cardList.addItem(renderCard(item));
-    }
-  }, cardListSection );
-}
 
 function renderCard(data) {
   const card = new Card ({
@@ -78,19 +74,7 @@ function renderCard(data) {
     },
 
     handleLikeClick: () => {
-
-      if(card.currentLike()) {
-        api.deleteLikeHandler(data._id).then((data) => {
-          card.handleButtonLikeClick(data);
-        })
-        .catch((err) => alert(err));
-
-      } else {
-        api.setLikeHandler(data._id).then((data) => {
-          card.handleButtonLikeClick(data);
-        })
-        .catch((err) => alert(err));
-      }
+      card.handleButtonLikeClick()
     },
 
     handleDeleteIconClick: () => {
@@ -103,9 +87,9 @@ function renderCard(data) {
         .catch((err) => alert(err));
       })
       popupWithDelete.open();
-    }, cardId
+    }
     
-  }, '.card-template')
+  }, '.card-template', userDataId, api)
 
   const cardElement = card.generateCard();
   return cardElement;
@@ -116,9 +100,8 @@ Promise.all([api.getUser(), api.getCards()])
   .then(([userData, cards]) => {
 
     userInfo.setUserInfo(userData);
-    cardId = userData._id;
+    userDataId = userData._id;
 
-    cardListHandler(cards);
     cardList.renderItems(cards);
   })
   .catch((err) => alert(err));
@@ -130,14 +113,13 @@ const addFormValue = new PopupWithForm({
     addFormValue.loadingHandler(true)
 
     api.addNewCard(data).then((data) => { 
-        cardList.addItem(data)
+      cardList.addItem(data)
         addFormValue.close();
       })
       .catch((err) => alert(err))
       .finally(() => {
         addFormValue.loadingHandler(false)
       }) 
-
   }
 });
 addFormValue.setEventListeners();
