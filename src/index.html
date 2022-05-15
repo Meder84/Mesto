@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mesto</title>
   </head>
-
+  <div>test</div>
   <body class="body body_theme_dark">
     <div class="page">
       <header class="header">
         <a href="#" target="_blank">
-          <img 
-            class="logo header__logo opacity" 
+          <img
+            class="logo header__logo opacity"
             src="<%=require('./images/logo.svg')%>"
             alt="Текст Mesto.">
         </a>
@@ -21,25 +21,25 @@
 
       <main class="content">
         <section class="profile">
-          <button 
+          <button
             class="profile__avatar-button"
-            type="button">              
+            type="button">
           </button>
-          <img 
-            class="profile__avatar" 
-            src="#" 
+          <img
+            class="profile__avatar"
+            src="#"
             alt="аватар.">
-          
+
           <div class="profile__info">
             <h1 class="profile__name"></h1>
-            <button 
-              class="profile__edit-button opacity" 
+            <button
+              class="profile__edit-button opacity"
               type="button">
             </button>
             <p class="profile__job"></p>
           </div>
-          <button 
-            class="profile__add-button opacity" 
+          <button
+            class="profile__add-button opacity"
             type="button">
           </button>
         </section>
@@ -53,49 +53,49 @@
       <footer class="footer page__footer">
         <p class="footer__copyright">&copy; 2021 Mesto Russia</p>
       </footer>
-      
+
       <div class="popup popup_type_edit">
         <div class="popup__container">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <button 
-            class="popup__close-button popup__close-button_edit opacity" 
+          <button
+            class="popup__close-button popup__close-button_edit opacity"
             type="button">
           </button>
-          <form 
-            class="popup__form" 
-            name="popup-form-edit" 
+          <form
+            class="popup__form"
+            name="popup-form-edit"
             action="#"
             novalidate>
             <input
-              class="popup__input popup__input_name" 
-              type="text" 
-              id="name-input" 
+              class="popup__input popup__input_name"
+              type="text"
+              id="name-input"
               name="name"
               required
               minlength="2"
               maxlength="40"
-              autocomplete="off" 
+              autocomplete="off"
               placeholder="Имя">
-            <span 
-              class="error" 
+            <span
+              class="error"
               id="name-input-error">
             </span>
             <input
-              class="popup__input popup__input_job" 
-              type="text" 
+              class="popup__input popup__input_job"
+              type="text"
               id="job-input"
-              name="about" 
+              name="about"
               required
               minlength="2"
               maxlength="200"
-              autocomplete="off" 
+              autocomplete="off"
               placeholder="Профессия">
-            <span 
-              class="error" 
+            <span
+              class="error"
               id="job-input-error">
             </span>
-            <button 
-              class="popup__button" 
+            <button
+              class="popup__button"
               type="submit">
                 Сохранить
             </button>
@@ -106,43 +106,43 @@
       <div class="popup popup_type_add">
         <div class="popup__container">
           <h2 class="popup__title">Новое место</h2>
-          <button 
-            class="popup__close-button popup__close-button_add opacity" 
+          <button
+            class="popup__close-button popup__close-button_add opacity"
             type="button">
           </button>
-          <form 
-            class="popup__form" 
-            name="popup-form-add" 
+          <form
+            class="popup__form"
+            name="popup-form-add"
             action="#"
             novalidate>
             <input
-              class="popup__input popup__input_description" 
-              type="text" 
+              class="popup__input popup__input_description"
+              type="text"
               name="name"
               id="description-input"
               required
               minlength="2"
               maxlength="30"
-              autocomplete="off" 
+              autocomplete="off"
               placeholder="Название">
-            <span 
-              class="error" 
+            <span
+              class="error"
               id="description-input-error">
             </span>
             <input
-              class="popup__input popup__input_url" 
-              type="url" 
+              class="popup__input popup__input_url"
+              type="url"
               name="link"
-              id="url-input" 
+              id="url-input"
               required
-              autocomplete="off" 
+              autocomplete="off"
               placeholder="Ссылка на картинку">
-            <span 
-              class="error" 
+            <span
+              class="error"
               id="url-input-error">
             </span>
-            <button 
-              class="popup__button" 
+            <button
+              class="popup__button"
               type="submit">
                 Создать
             </button>
@@ -152,13 +152,13 @@
 
       <div class="popup popup_type_place">
         <figure class="popup__container-place">
-          <button 
-            class="popup__close-button popup__close-button_place opacity" 
+          <button
+            class="popup__close-button popup__close-button_place opacity"
             type="button">
           </button>
-          <img 
-            class="popup__image" 
-            src="#" 
+          <img
+            class="popup__image"
+            src="#"
             alt="Красивые места мира">
           <figcaption class="popup__caption">
           </figcaption>
@@ -167,51 +167,51 @@
 
       <div class="popup popup_type_delete">
         <div class="popup__container">
-          <button 
-            class="popup__close-button popup__close-button_delete opacity" 
+          <button
+            class="popup__close-button popup__close-button_delete opacity"
             type="button">
           </button>
           <h2 class="popup__title popup__title_type_delete">Вы уверены?</h2>
-          <form 
-            class="popup__form" 
-            name="popup-form-delete" 
+          <form
+            class="popup__form"
+            name="popup-form-delete"
             action="#"
             novalidate>
-              <button 
-                class="popup__button" 
+              <button
+                class="popup__button"
                 type="submit">Да
               </button>
           </form>
-         
+
         </div>
       </div>
 
       <div class="popup popup_type_avatar">
         <div class="popup__container">
           <h2 class="popup__title">Обновить аватар</h2>
-          <button 
-            class="popup__close-button popup__close-button_avatar opacity" 
+          <button
+            class="popup__close-button popup__close-button_avatar opacity"
             type="button">
           </button>
-          <form 
-            class="popup__form" 
-            name="avatar" 
+          <form
+            class="popup__form"
+            name="avatar"
             action="#"
             novalidate>
             <input
-              class="popup__input popup__input_url" 
-              type="url" 
+              class="popup__input popup__input_url"
+              type="url"
               name="avatar"
-              id="avatar-input" 
+              id="avatar-input"
               required
-              autocomplete="off" 
+              autocomplete="off"
               placeholder="Ссылка на картинку">
-            <span 
-              class="error" 
+            <span
+              class="error"
               id="avatar-input-error">
             </span>
-            <button 
-              class="popup__button" 
+            <button
+              class="popup__button"
               type="submit">
                 Сохранить
             </button>
@@ -219,12 +219,12 @@
         </div>
       </div>
 
-      <template 
-        class="card-template" 
+      <template
+        class="card-template"
         id="card-template">
         <article class="card">
-          <button 
-            class="card__delete-button opacity" 
+          <button
+            class="card__delete-button opacity"
             type="button">
           </button>
           <img class="card__image" src="#" alt="Достопримечательности нашей планеты.">
