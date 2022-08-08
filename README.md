@@ -8,7 +8,7 @@
 * Есть функционал, где можно ввести данные о пользователя, с помощью всплывающих окон. 
 
 * [Ссылка на проект в github](https://meder84.github.io/mesto/index.html)
-
+* [Ссылка на проект в github](https://vk.com/s/v1/doc/_ov48ZffvW32GdzWyA39JYlg2euDdJ6zKWJkQslXLwMuRbxfn88)
 
 **Использованные технологии**
 
