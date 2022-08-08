@@ -8,7 +8,7 @@
 * Общение с сервером и написание логики работы, с использованием fetch API.
 * Есть функционал, где можно ввести данные о пользователя, с помощью всплывающих окон. 
 * [Ссылка на проект в github](https://meder84.github.io/mesto/index.html)
-* [Ссылка на анимацию](https://vk.com/s/v1/doc/_ov48ZffvW32GdzWyA39JYlg2euDdJ6zKWJkQslXLwMuRbxfn88)
+* [Ссылка на анимацию](https://github.com/Meder84/Meder84/blob/main/gif/mesto.gif)
 
 **Использованные технологии**
 * Html5.
