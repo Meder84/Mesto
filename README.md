@@ -1,6 +1,6 @@
 # Проект: Mesto
 * [Ссылка на проект в github](https://meder84.github.io/mesto/index.html)
-* [Анимированная инфографика сайта](https://github.com/Meder84/Meder84/blob/main/gif/mesto.gif)
+* [Анимированная инфографика сайта](https://github.com/Meder84/Meder84/blob/main/gif/mesto1024.gif)
 
 ### Обзор
 * Проект Mesto. Это сайт, где можно поделиться со своими картинками. 
